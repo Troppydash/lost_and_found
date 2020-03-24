@@ -1,13 +1,99 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --scots-red: #b82832;
+  --scots-grey1 : #6b6b6b;
+  --scots-grey2 : #4b4b4b;
+  --scots-lightgrey : #f2f2f2;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
+* {
+  font-family: "Amasis MT W01", serif;
+}
+
+h1, h2, h3, h4, h5, h6, p, span {
+
+}
+
+/*start::Grid Shit*/
+.grid-container {
+  display: grid;
+  grid-template-areas:
+          'header header header header header header'
+          'menu content content content content content'
+          'footer footer footer footer footer footer';
+  grid-gap: 20px;
+}
+
+.header {
+  grid-area: header;
+  background: #ffffff url("/img/banner/main_banner.png") no-repeat center left;
+  background-size: cover;
+
+  height: 250px;
+}
+
+.menu {
+  grid-area: menu;
+
+  /*temp*/
+  min-height: 20vh;
+  background-color: var(--scots-red);
+}
+
+.content {
+  grid-area: content;
+
+  /*temp*/
+  min-height: 60vh;
+  background-color: var(--scots-lightgrey);
+}
+
+.footer {
+  grid-area: footer;
+
+  min-height: 20vh;
+  overflow-x: auto;
+  background-color: var(--scots-grey2);
+
+  color: white;
+}
+/*Grid Shit*/
+
+
+/*Responsive*/
+
+@media only screen and (max-width: 1024px) {
+  .grid-container {
+    grid-template-areas:
+            'header header'
+            'menu menu'
+            'content content'
+            'footer footer';
+    grid-gap: 10px;
+  }
+
+  .header {
+    background: #ffffff url("/img/banner/mobile_banner.png") no-repeat center left;
+    background-size: 100vw auto;
+
+    min-height: 20vh;
+    height: initial;
+  }
+}
+
+@media only screen and (max-width: 728px) {
+  .header {
+    background: #ffffff url("/img/banner/mobile_banner.png") no-repeat center left;
+    background-size: 100vw auto;
+
+    min-height: 15vh;
+    height: initial;
+  }
+}
+/*Responsive*/
+
