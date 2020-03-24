@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import './font.css';
+import './global.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
@@ -10,9 +11,7 @@ import axios from 'axios';
 axios.defaults.baseURL = 'https://us-central1-lost-and-found-660fb.cloudfunctions.net/api';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+    <App />,
   document.getElementById('root')
 );
 

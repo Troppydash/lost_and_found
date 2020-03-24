@@ -5,6 +5,7 @@ import './content.css';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import database from '../firebase';
+import AddFound from './addFound';
 
 dayjs.extend(relativeTime);
 
@@ -35,8 +36,10 @@ class Content extends Component {
     }
 
     componentWillUnmount() {
-        notify('content.js', 'Unmounting Listener');
-        this.state.observer();
+        if (this.state.observer) {
+            notify('content.js', 'Unmounting Listener');
+            this.state.observer();
+        }
     }
 
     fetchFromServerAndUpdateState = () => {
@@ -69,6 +72,7 @@ class Content extends Component {
         const { isLoading , hasError , items } = this.state;
         return (
             <>
+                <AddFound />
                 {
                     !isLoading ? (
                         <>
