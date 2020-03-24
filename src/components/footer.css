@@ -1,0 +1,14 @@
+.flex-box {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 15rem;
+}
+
+.image-container {
+    max-height: 90%;
+    margin: 0 10px;
+}
+

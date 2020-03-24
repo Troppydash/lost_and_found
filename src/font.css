@@ -1,0 +1,8 @@
+@font-face {font-family: "Amasis MT W01";
+    src: url("/fonts/Amasis MT W01/0265a544cc43b98d59d14329eb220ff0.eot"); /* IE9*/
+    src: url("/fonts/Amasis MT W01/0265a544cc43b98d59d14329eb220ff0.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("/fonts/Amasis MT W01/0265a544cc43b98d59d14329eb220ff0.woff2") format("woff2"), /* chrome、firefox */
+    url("/fonts/Amasis MT W01/0265a544cc43b98d59d14329eb220ff0.woff") format("woff"), /* chrome、firefox */
+    url("/fonts/Amasis MT W01/0265a544cc43b98d59d14329eb220ff0.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url("/fonts/Amasis MT W01/0265a544cc43b98d59d14329eb220ff0.svg#Amasis MT W01") format("svg"); /* iOS 4.1- */
+}

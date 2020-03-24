@@ -1,0 +1,7 @@
+Scots color palette
+
+red : #b82832
+grey 1 : #6b6b6b
+grey 2 : #4b4b4b
+
+light grey 1 : #f2f2f2
