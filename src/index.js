@@ -7,7 +7,7 @@ import * as serviceWorker from './serviceWorker';
 
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:5000/lost-and-found-660fb/us-central1/api';
+axios.defaults.baseURL = 'https://us-central1-lost-and-found-660fb.cloudfunctions.net/api';
 
 ReactDOM.render(
   <React.StrictMode>

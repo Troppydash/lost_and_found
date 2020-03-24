@@ -4,6 +4,7 @@ import { notify } from '../util/helpers';
 import './content.css';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
+import database from '../firebase';
 
 dayjs.extend(relativeTime);
 
@@ -11,12 +12,36 @@ class Content extends Component {
     state = {
         isLoading: false ,
         hasError: null ,
-        items: []
+        items: [],
+
+        observer: null,
     };
 
     componentDidMount() {
-        // Fetch
+        notify('content.js' , 'Mounting Listener');
+
+        this.setState({
+            observer: database.collection('found')
+        }, () => {
+            notify('content.js' , 'Mounted Success');
+            this.state.observer.onSnapshot(() => {
+                notify('content.js' , 'Listener Activated');
+                this.fetchFromServerAndUpdateState();
+            }, err => {
+                notify('content.js', 'Mounting Failed');
+                console.error(err);
+            })
+        });
+    }
+
+    componentWillUnmount() {
+        notify('content.js', 'Unmounting Listener');
+        this.state.observer();
+    }
+
+    fetchFromServerAndUpdateState = () => {
         notify('content.js' , 'Fetching Items');
+
         this.setState({
             isLoading: true ,
         });
@@ -26,7 +51,8 @@ class Content extends Component {
                 this.setState({
                     isLoading: false ,
                     hasError: null ,
-                    items: res.data
+                    items: res.data,
+                    observer: database.collection('found')
                 });
             })
             .catch(err => {
@@ -36,7 +62,7 @@ class Content extends Component {
                     hasError: err ,
                 });
             });
-    }
+    };
 
     render() {
         const labels = ['item type' , 'found at' , 'name' , 'description' , 'house' , 'is claimed' , 'image'];
