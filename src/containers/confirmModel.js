@@ -1,4 +1,4 @@
-import React from 'react';
+import React , { useContext } from 'react';
 import { Dialog } from '@material-ui/core';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -7,17 +7,21 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import axios from 'axios';
 import { notify } from '../util/helpers';
+import { SnackbarContext } from '../util/SnackbarContext';
 
 function ConfirmModel({item, clearDeletedItem}) {
+    const {showSnackbar} = useContext(SnackbarContext);
 
     const handleDelete = () => {
 
         axios.post('/found/deleteItem', { itemId: item.itemId })
             .then(res => {
                 notify('confirmModel.js', 'Delete Success');
+                showSnackbar('success', "Item successfully Deleted");
             })
             .catch(err => {
                 notify('confirmModel.js', 'Delete Failed');
+                showSnackbar('error', "There was a problem deleting your item");
                 console.error(err);
             })
             .finally(() => {

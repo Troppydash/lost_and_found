@@ -1,4 +1,4 @@
-import React , { Component } from 'react';
+import React , { Component , useContext } from 'react';
 import Button from '@material-ui/core/Button';
 import { Dialog } from '@material-ui/core';
 import DialogTitle from '@material-ui/core/DialogTitle';
@@ -24,6 +24,7 @@ import {
 import axios from 'axios';
 import { notify } from '../util/helpers';
 import FormHelperText from '@material-ui/core/FormHelperText';
+import { SnackbarContext } from '../util/SnackbarContext';
 
 const useStyles = makeStyles(theme => ({
     formControl: {
@@ -32,6 +33,8 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function AddFound() {
+    const { showSnackbar } = useContext(SnackbarContext);
+
     const initialState = {
         name: '' ,
         itemType: '' ,
@@ -45,8 +48,15 @@ function AddFound() {
     const [formData , setFormData] = React.useState(initialState);
     const [formError , setFormError] = React.useState({});
 
+    const [haveOthers , setHaveOthers] = React.useState(false);
+    const [others , setOthers] = React.useState('');
+    const [itemType , setItemType] = React.useState('');
+
     const handleClickOpen = () => {
         setFormData(initialState);
+        setHaveOthers(false);
+        setOthers('');
+        setItemType('');
         setFormError({});
         setOpen(true);
     };
@@ -58,9 +68,21 @@ function AddFound() {
     const handleSubmit = e => {
         e.preventDefault();
 
+        if (haveOthers && !others) {
+            setFormError({
+                ...formError ,
+                others: 'Others must not be empty',
+                itemType: '',
+            });
+            return 0;
+        }
+
         axios.post('/found/addItem' , {
-            ...formData ,
-            image: ''
+            name: formData.name ,
+            itemType: haveOthers ? others : itemType ,
+            house: formData.house ,
+            description: formData.description ,
+            foundAt: formData.foundAt
         })
             .then(res => {
                 notify('addFound.js' , 'Item added successfully');
@@ -68,15 +90,40 @@ function AddFound() {
                 if (!formData.image) {
                     return 0;
                 }
-                return submitImage(res.data.itemId);
+                submitImage(res.data.itemId)
+                    .then(res => {
+                        notify('addFound.js' , 'Image added to item successfully');
+                        return 0;
+                    })
+                    .catch(err => {
+                        notify('addFound.js' , 'Image failed to add');
+                        showSnackbar('error' , 'There was an problem adding your image');
+                        console.error(err);
+                        return 0;
+                    });
             })
             .then(() => {
                 handleClose();
             })
             .catch(err => {
+                showSnackbar('error' , 'There was an problem adding your item');
                 setFormError(err.response.data);
                 notify('addFound.js' , 'Item failed to add');
             });
+    };
+
+    const handleItemType = ( value , isOther ) => {
+        if (isOther) {
+            setOthers(value);
+        } else {
+            setItemType(value);
+        }
+
+        if (!isOther && value === 'Others' && !haveOthers) {
+            setHaveOthers(true);
+        } else if (!isOther && value !== 'Others' && haveOthers) {
+            setHaveOthers(false);
+        }
     };
 
     const handleChange = e => {
@@ -95,8 +142,8 @@ function AddFound() {
 
     const submitImage = itemId => {
         let formData = new FormData();
-        formData.append('image', document.getElementById('imageInput').files[0]);
-        return axios.post(`/found/addItemImage/${itemId}`, formData);
+        formData.append('image' , document.getElementById('imageInput').files[0]);
+        return axios.post(`/found/addItemImage/${ itemId }` , formData);
     };
 
     const handleImage = e => {
@@ -138,20 +185,45 @@ function AddFound() {
                         </FormGroup>
 
                         <FormGroup>
-                            <TextField
-                                error={ !!formError.itemType }
-                                className={ classes.formControl }
-                                autoFocus
-                                id="itemType"
-                                name="itemType"
-                                label="Item Type"
-                                type="text"
-                                fullWidth
-                                margin='dense'
-                                variant='filled'
-                                onChange={ handleChange }
-                                value={ formData.itemType }
-                                helperText={ formError.itemType || '' } />
+                            <FormControl error={formError.itemType}>
+                                <InputLabel id="itemType">Item Type</InputLabel>
+                                <Select
+                                    labelId="itemType"
+                                    className={ classes.formControl }
+                                    id="itemType"
+                                    name="itemType"
+                                    value={ itemType }
+                                    onChange={ e => handleItemType(e.target.value , false) }>
+                                    <MenuItem value="Blazer">Blazer</MenuItem>
+                                    <MenuItem value="Shirt">Shirt</MenuItem>
+                                    <MenuItem value="PE Gear">PE Gear</MenuItem>
+                                    <MenuItem value="Phone">Phone</MenuItem>
+                                    <MenuItem value="Computer">Computer</MenuItem>
+                                    <MenuItem value="Trousers">Trousers</MenuItem>
+                                    <MenuItem value="Others">Others</MenuItem>
+                                </Select>
+
+                                {formError.itemType && <FormHelperText>{formError.itemType}</FormHelperText>}
+
+                                {
+                                    haveOthers && (
+                                        <TextField
+                                            error={ formError.others }
+                                            className={ classes.formControl }
+                                            id="others"
+                                            name="others"
+                                            label="Others"
+                                            type="text"
+                                            fullWidth
+                                            margin='dense'
+                                            variant='filled'
+                                            onChange={ e => handleItemType(e.target.value , true) }
+                                            value={ others }
+                                            helperText={ formError.others || '' } />
+                                    )
+                                }
+
+                            </FormControl>
                         </FormGroup>
 
                         <FormGroup>
@@ -179,7 +251,6 @@ function AddFound() {
 
                         <FormGroup>
                             <TextField
-                                autoFocus
                                 id="description"
                                 name="description"
                                 label="Description"
@@ -211,7 +282,7 @@ function AddFound() {
 
                         <FormGroup>
                             <input type="file" id="imageInput" hidden onChange={ handleImageChange } />
-                            <Button onClick={ handleImage }>{formData.image ? "Change" : "Add"} Image</Button>
+                            <Button onClick={ handleImage }>{ formData.image ? 'Change' : 'Add' } Image</Button>
                         </FormGroup>
                     </form>
 

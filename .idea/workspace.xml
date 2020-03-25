@@ -1,22 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9214ea1e-4dae-4ba1-a65c-7f182540aed8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/menu.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/confirmModel.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/detailModel.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/detailModel.js" afterDir="false" />
+    <list default="true" id="a17e29dd-5235-4bbe-91d5-655273cde0ed" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/containers/globalSnackbar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/util/SnackbarContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/lost_and_found_v2.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/footer.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/menu.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/addFound.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/addFound.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/content.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/content.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/confirmModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/confirmModel.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/content.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/content.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Found.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Found.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,15 +22,13 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="CSS File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1ZYZ3rNokp1r4LlCF9Q1trSl4tC" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="1ZbFKBAOSF8BxRMbIAwaNCEsgGM" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -43,10 +36,8 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Projects" />
-    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -55,18 +46,9 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="settings.nodejs" />
-    <property name="ts.external.directory.path" value="D:\Windows\Jetbrains\apps\WebStorm\ch-0\193.6494.34\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\Folder2020\ReactProjects\lost_and_found_v2\src\containers" />
-    </key>
-  </component>
-  <component name="RunManager" selected="npm.npm start">
-    <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
-      <method v="2" />
-    </configuration>
-    <configuration name="npm start" type="js.build_tools.npm">
+  <component name="RunManager">
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts>
@@ -76,115 +58,54 @@
       <envs />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.start" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="9214ea1e-4dae-4ba1-a65c-7f182540aed8" name="Default Changelist" comment="" />
-      <created>1585017791314</created>
+      <changelist id="a17e29dd-5235-4bbe-91d5-655273cde0ed" name="Default Changelist" comment="" />
+      <created>1585099820380</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1585017791314</updated>
-      <workItem from="1585017794665" duration="4597000" />
-      <workItem from="1585027083921" duration="119000" />
-      <workItem from="1585074277506" duration="23355000" />
+      <updated>1585099820380</updated>
+      <workItem from="1585099821605" duration="524000" />
+      <workItem from="1585112459986" duration="7163000" />
     </task>
-    <task id="LOCAL-00001" summary="Scaffolding">
-      <created>1585026907556</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1585026907556</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Scaffolding 2">
-      <created>1585027151279</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1585027151279</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Added realtime update">
-      <created>1585078336875</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1585078336875</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Added AddFound Item">
-      <created>1585084537562</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1585084537562</updated>
-    </task>
-    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Scaffolding" />
-    <MESSAGE value="Scaffolding 2" />
-    <MESSAGE value="Added realtime update" />
-    <MESSAGE value="Added AddFound Item" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added AddFound Item" />
-  </component>
   <component name="WindowStateProjectService">
-    <state x="559" y="111" key="CommitChangelistDialog2" timestamp="1585084535843">
+    <state x="559" y="111" key="CommitChangelistDialog2" timestamp="1585119734736">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="559" y="111" key="CommitChangelistDialog2/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585084535843" />
-    <state x="805" y="409" key="Github.ShareDialog" timestamp="1585026716969">
+    <state x="559" y="111" key="CommitChangelistDialog2/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585119734736" />
+    <state width="1901" height="279" key="GridCell.Tab.0.bottom" timestamp="1585116090835">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="805" y="409" key="Github.ShareDialog/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585026716969" />
-    <state width="1901" height="282" key="GridCell.Tab.0.bottom" timestamp="1585092257513">
+    <state width="1901" height="279" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585116090835" />
+    <state width="1901" height="279" key="GridCell.Tab.0.center" timestamp="1585116090835">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1901" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585092257513" />
-    <state width="1901" height="282" key="GridCell.Tab.0.center" timestamp="1585092257513">
+    <state width="1901" height="279" key="GridCell.Tab.0.center/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585116090835" />
+    <state width="1901" height="279" key="GridCell.Tab.0.left" timestamp="1585116090835">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1901" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585092257513" />
-    <state width="1901" height="282" key="GridCell.Tab.0.left" timestamp="1585092257513">
+    <state width="1901" height="279" key="GridCell.Tab.0.left/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585116090835" />
+    <state width="1901" height="279" key="GridCell.Tab.0.right" timestamp="1585116090835">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1901" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585092257513" />
-    <state width="1901" height="282" key="GridCell.Tab.0.right" timestamp="1585092257513">
+    <state width="1901" height="279" key="GridCell.Tab.0.right/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585116090835" />
+    <state x="472" y="109" width="1041" height="821" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1585117159069">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1901" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585092257513" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1585078338484">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585078338484" />
-    <state x="755" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585079368535">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="755" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585079368535" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1585077930100">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585077930100" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1585019686287">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585019686287" />
+    <state x="472" y="109" width="1041" height="821" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585117159069" />
   </component>
 </project>

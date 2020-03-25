@@ -15,6 +15,7 @@ import similarity from 'similarity';
 import ConfirmModel from './confirmModel';
 import Button from '@material-ui/core/Button';
 import DetailModel from './detailModel';
+import GlobalSnackbar from './globalSnackbar';
 
 dayjs.extend(relativeTime);
 
@@ -27,7 +28,7 @@ class Content extends Component {
         query: '' ,
 
         deleteItem: null ,
-        detailItem: null
+        detailItem: null ,
     };
 
     unSub = null;
@@ -37,6 +38,11 @@ class Content extends Component {
         this._isMounted = true;
         notify('content.js' , 'Mounting Listener');
 
+        if (this._isMounted) {
+            this.setState({
+                isLoading: true,
+            });
+        }
         this.unSub = database.collection('found').onSnapshot(() => {
             if (this._isMounted) {
                 notify('content.js' , 'Listener Activated');
@@ -73,7 +79,7 @@ class Content extends Component {
                         isLoading: false ,
                         hasError: null ,
                         items: res.data ,
-                        observer: database.collection('found')
+                        observer: database.collection('found'),
                     });
                 }
             })
@@ -102,7 +108,7 @@ class Content extends Component {
 
     render() {
         const labels = ['item type' , 'found at' , 'name' , 'description' , 'house' , 'is claimed' , ''];
-        const { hasError , items , query , deleteItem , detailItem } = this.state;
+        const { isLoading , hasError , items , query , deleteItem , detailItem } = this.state;
         return (
             <>
                 {
@@ -119,7 +125,7 @@ class Content extends Component {
                     <Typography variant="h6" color="primary">Query</Typography>
                     <FormGroup>
                         <TextField size="small" style={ { background: '#f2f2f2' } } value={ query }
-                                   onChange={ e => this.setState({ query: e.target.value }) } />
+                                   onChange={ e => this.setState({ query: e.target.value.toLowerCase() }) } />
                     </FormGroup>
                     <AddFound />
                 </div>
@@ -142,9 +148,9 @@ class Content extends Component {
                                 </thead>
                                 <tbody>
                                 {
-                                    items && (
+                                    items.length > 0 ? (
                                         items.filter(v => {
-                                            let fullName = `${ v.firstName } ${ v.lastName }`;
+                                            let fullName = `${ v.firstName } ${ v.lastName }`.toLowerCase();
                                             if (fullName.includes(query) || !query) {
                                                 return true;
                                             }
@@ -169,7 +175,13 @@ class Content extends Component {
                                                 </td>
                                             </tr>
                                         ))
-                                    )
+                                    ) : (isLoading && (
+                                        <tr>
+                                            <td colSpan={ labels.length } style={ { textAlign: 'center' } }>
+                                                <Typography variant="h2" color="textSecondary">Loading...</Typography>
+                                            </td>
+                                        </tr>
+                                    ))
                                 }
                                 </tbody>
                             </table>
