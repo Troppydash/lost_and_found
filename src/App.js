@@ -11,12 +11,15 @@ import Footer from './components/footer';
 import Lost from './pages/Lost';
 import Found from './pages/Found';
 import Home from './pages/Home';
+import Menu from './components/menu';
 
 function App() {
     return (
-        <div className="grid-container">
-            <Header/>
-            <Router>
+        <Router>
+            <div className="grid-container">
+                <Header />
+                <Menu />
+
                 <Switch>
                     <Route exact path='/lost'>
                         <Lost />
@@ -28,9 +31,10 @@ function App() {
                         <Home />
                     </Route>
                 </Switch>
-            </Router>
-            <Footer/>
-        </div>
+
+                <Footer />
+            </div>
+        </Router>
     );
 }
 

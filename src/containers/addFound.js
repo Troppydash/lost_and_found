@@ -37,7 +37,8 @@ function AddFound() {
         itemType: '' ,
         house: '' ,
         description: '' ,
-        foundAt: new Date().toISOString()
+        foundAt: new Date().toISOString() ,
+        image: false
     };
     const classes = useStyles();
     const [open , setOpen] = React.useState(false);
@@ -57,14 +58,24 @@ function AddFound() {
     const handleSubmit = e => {
         e.preventDefault();
 
-        axios.post('/found/addItem' , formData)
+        axios.post('/found/addItem' , {
+            ...formData ,
+            image: ''
+        })
             .then(res => {
                 notify('addFound.js' , 'Item added successfully');
+
+                if (!formData.image) {
+                    return 0;
+                }
+                return submitImage(res.data.itemId);
+            })
+            .then(() => {
                 handleClose();
             })
             .catch(err => {
                 setFormError(err.response.data);
-                notify('addFound.js' , 'Item was failed to add');
+                notify('addFound.js' , 'Item failed to add');
             });
     };
 
@@ -79,6 +90,23 @@ function AddFound() {
         setFormData({
             ...formData ,
             foundAt: e
+        });
+    };
+
+    const submitImage = itemId => {
+        let formData = new FormData();
+        formData.append('image', document.getElementById('imageInput').files[0]);
+        return axios.post(`/found/addItemImage/${itemId}`, formData);
+    };
+
+    const handleImage = e => {
+        document.getElementById('imageInput').click();
+    };
+
+    const handleImageChange = e => {
+        setFormData({
+            ...formData ,
+            image: true
         });
     };
 
@@ -179,6 +207,11 @@ function AddFound() {
                                     onChange={ handleDateChange }
                                 />
                             </MuiPickersUtilsProvider>
+                        </FormGroup>
+
+                        <FormGroup>
+                            <input type="file" id="imageInput" hidden onChange={ handleImageChange } />
+                            <Button onClick={ handleImage }>{formData.image ? "Change" : "Add"} Image</Button>
                         </FormGroup>
                     </form>
 

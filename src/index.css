@@ -8,11 +8,11 @@
 body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 * {
   font-family: "Amasis MT W01", serif;
+  box-sizing: border-box;
 }
 
 h1, h2, h3, h4, h5, h6, p, span {
@@ -23,10 +23,11 @@ h1, h2, h3, h4, h5, h6, p, span {
 .grid-container {
   display: grid;
   grid-template-areas:
-          'header header header header header header'
-          'menu content content content content content'
-          'footer footer footer footer footer footer';
-  grid-gap: 20px;
+          'header header'
+          'menu menu'
+          'content content'
+          'footer footer';
+  grid-gap: 5px;
 }
 
 .header {
@@ -41,7 +42,7 @@ h1, h2, h3, h4, h5, h6, p, span {
   grid-area: menu;
 
   /*temp*/
-  min-height: 20vh;
+  min-height: 5vh;
   background-color: var(--scots-red);
 }
 
@@ -50,7 +51,7 @@ h1, h2, h3, h4, h5, h6, p, span {
 
   /*temp*/
   min-height: 60vh;
-  background-color: var(--scots-lightgrey);
+  /*background-color: var(--scots-lightgrey);*/
 }
 
 .footer {

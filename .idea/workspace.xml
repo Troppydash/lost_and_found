@@ -2,12 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9214ea1e-4dae-4ba1-a65c-7f182540aed8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/containers/addFound.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/global.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/menu.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/containers/confirmModel.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/containers/detailModel.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/containers/detailModel.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/footer.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/menu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/addFound.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/addFound.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/content.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/content.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/content.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/content.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Found.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Found.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +89,7 @@
       <updated>1585017791314</updated>
       <workItem from="1585017794665" duration="4597000" />
       <workItem from="1585027083921" duration="119000" />
-      <workItem from="1585074277506" duration="10034000" />
+      <workItem from="1585074277506" duration="23355000" />
     </task>
     <task id="LOCAL-00001" summary="Scaffolding">
       <created>1585026907556</created>
@@ -103,7 +112,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585078336875</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added AddFound Item">
+      <created>1585084537562</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1585084537562</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -126,33 +142,34 @@
     <MESSAGE value="Scaffolding" />
     <MESSAGE value="Scaffolding 2" />
     <MESSAGE value="Added realtime update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added realtime update" />
+    <MESSAGE value="Added AddFound Item" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added AddFound Item" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="559" y="111" key="CommitChangelistDialog2" timestamp="1585078334941">
+    <state x="559" y="111" key="CommitChangelistDialog2" timestamp="1585084535843">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="559" y="111" key="CommitChangelistDialog2/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585078334941" />
+    <state x="559" y="111" key="CommitChangelistDialog2/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585084535843" />
     <state x="805" y="409" key="Github.ShareDialog" timestamp="1585026716969">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="805" y="409" key="Github.ShareDialog/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585026716969" />
-    <state width="1901" height="282" key="GridCell.Tab.0.bottom" timestamp="1585083746546">
+    <state width="1901" height="282" key="GridCell.Tab.0.bottom" timestamp="1585092257513">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1901" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585083746546" />
-    <state width="1901" height="282" key="GridCell.Tab.0.center" timestamp="1585083746546">
+    <state width="1901" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585092257513" />
+    <state width="1901" height="282" key="GridCell.Tab.0.center" timestamp="1585092257513">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1901" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585083746546" />
-    <state width="1901" height="282" key="GridCell.Tab.0.left" timestamp="1585083746546">
+    <state width="1901" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585092257513" />
+    <state width="1901" height="282" key="GridCell.Tab.0.left" timestamp="1585092257513">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1901" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585083746546" />
-    <state width="1901" height="282" key="GridCell.Tab.0.right" timestamp="1585083746546">
+    <state width="1901" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585092257513" />
+    <state width="1901" height="282" key="GridCell.Tab.0.right" timestamp="1585092257513">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1901" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585083746546" />
+    <state width="1901" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585092257513" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1585078338484">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

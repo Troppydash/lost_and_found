@@ -6,6 +6,15 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import database from '../firebase';
 import AddFound from './addFound';
+import Divider from '@material-ui/core/Divider';
+import { FormGroup } from '@material-ui/core';
+import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
+
+import similarity from 'similarity';
+import ConfirmModel from './confirmModel';
+import Button from '@material-ui/core/Button';
+import DetailModel from './detailModel';
 
 dayjs.extend(relativeTime);
 
@@ -13,102 +22,159 @@ class Content extends Component {
     state = {
         isLoading: false ,
         hasError: null ,
-        items: [],
+        items: [] ,
 
-        observer: null,
+        query: '' ,
+
+        deleteItem: null ,
+        detailItem: null
     };
 
+    unSub = null;
+    _isMounted = false;
+
     componentDidMount() {
+        this._isMounted = true;
         notify('content.js' , 'Mounting Listener');
 
-        this.setState({
-            observer: database.collection('found')
-        }, () => {
-            notify('content.js' , 'Mounted Success');
-            this.state.observer.onSnapshot(() => {
+        this.unSub = database.collection('found').onSnapshot(() => {
+            if (this._isMounted) {
                 notify('content.js' , 'Listener Activated');
                 this.fetchFromServerAndUpdateState();
-            }, err => {
-                notify('content.js', 'Mounting Failed');
-                console.error(err);
-            })
+            }
+        } , err => {
+            notify('content.js' , 'Mounting Failed');
+            console.error(err);
         });
     }
 
     componentWillUnmount() {
-        if (this.state.observer) {
-            notify('content.js', 'Unmounting Listener');
-            this.state.observer();
+        if (this.unSub) {
+            notify('content.js' , 'Unmounting Listener');
+            this.unSub();
         }
+        this._isMounted = false;
+        this.unSub = null;
     }
 
     fetchFromServerAndUpdateState = () => {
         notify('content.js' , 'Fetching Items');
 
-        this.setState({
-            isLoading: true ,
-        });
+        if (this._isMounted) {
+            this.setState({
+                isLoading: true ,
+            });
+        }
         axios.get('/found/getItems')
             .then(res => {
                 notify('content.js' , 'Fetching Success');
-                this.setState({
-                    isLoading: false ,
-                    hasError: null ,
-                    items: res.data,
-                    observer: database.collection('found')
-                });
+                if (this._isMounted) {
+                    this.setState({
+                        isLoading: false ,
+                        hasError: null ,
+                        items: res.data ,
+                        observer: database.collection('found')
+                    });
+                }
             })
             .catch(err => {
                 notify('content.js' , 'Fetching Failed');
-                this.setState({
-                    isLoading: false ,
-                    hasError: err ,
-                });
+                if (this._isMounted) {
+                    this.setState({
+                        isLoading: false ,
+                        hasError: err ,
+                    });
+                }
             });
     };
 
+    handleDelete = item => {
+        this.setState({
+            deleteItem: item
+        });
+    };
+
+    handleDetail = item => {
+        this.setState({
+            detailItem: item
+        });
+    };
+
     render() {
-        const labels = ['item type' , 'found at' , 'name' , 'description' , 'house' , 'is claimed' , 'image'];
-        const { isLoading , hasError , items } = this.state;
+        const labels = ['item type' , 'found at' , 'name' , 'description' , 'house' , 'is claimed' , ''];
+        const { hasError , items , query , deleteItem , detailItem } = this.state;
         return (
             <>
-                <AddFound />
                 {
-                    !isLoading ? (
-                        <>
-                            {hasError && <h1 style={{color: 'red'}}>Something went wrong</h1>}
-                            <div className='table-container'>
-                                <table>
-                                    <thead>
-                                    <tr>
-                                        {
-                                            labels.map(( item , key ) => (
-                                                <th key={ key }>{ item }</th>
-                                            ))
-                                        }
-                                    </tr>
-                                    </thead>
-                                    <tbody>
+                    deleteItem ? <ConfirmModel item={ deleteItem }
+                                               clearDeletedItem={ () => this.setState({ deleteItem: null }) } /> : null
+                }
+
+                {
+                    detailItem ? <DetailModel item={ detailItem }
+                                              clearDetailItem={ () => this.setState({ detailItem: null }) } /> : null
+                }
+
+                <div className='action-flex-box'>
+                    <Typography variant="h6" color="primary">Query</Typography>
+                    <FormGroup>
+                        <TextField size="small" style={ { background: '#f2f2f2' } } value={ query }
+                                   onChange={ e => this.setState({ query: e.target.value }) } />
+                    </FormGroup>
+                    <AddFound />
+                </div>
+
+                <Divider />
+
+                {
+                    <>
+                        { hasError && <h1 style={ { color: 'red' } }>Something went wrong</h1> }
+                        <div className='table-container'>
+                            <table className="content-table">
+                                <thead>
+                                <tr>
                                     {
-                                        items && (
-                                            items.map((item, i) => (
-                                                <tr key={item.itemId}>
-                                                    <td>{item.itemType}</td>
-                                                    <td>{dayjs(item.foundAt).fromNow() }</td>
-                                                    <td>{`${item.firstName} ${item.lastName}`}</td>
-                                                    <td>{item.description}</td>
-                                                    <td>{item.house}</td>
-                                                    <td>{item.isClaimed ? 'Claimed' : 'Pending'}</td>
-                                                    <td><img src={item.imageSrc}/></td>
-                                                </tr>
-                                            ))
-                                        )
+                                        labels.map(( item , key ) => (
+                                            <th key={ key }>{ item }</th>
+                                        ))
                                     }
-                                    </tbody>
-                                </table>
-                            </div>
-                        </>
-                    ) : <p>Loading...</p>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {
+                                    items && (
+                                        items.filter(v => {
+                                            let fullName = `${ v.firstName } ${ v.lastName }`;
+                                            if (fullName.includes(query) || !query) {
+                                                return true;
+                                            }
+                                            return similarity(fullName , query) > 0.3;
+
+                                        }).map(( item , i ) => (
+                                            <tr key={ item.itemId }>
+                                                <td onClick={ () => this.handleDetail(item) }>{ item.itemType }</td>
+                                                <td onClick={ () => this.handleDetail(item) }>{ dayjs(item.foundAt).fromNow() }</td>
+                                                <td onClick={ () => this.handleDetail(item) }>{ `${ item.firstName } ${ item.lastName }` }</td>
+                                                <td style={ { maxWidth: '20vw' } }
+                                                    onClick={ () => this.handleDetail(item) }>
+                                                    <p style={ { wordWrap: 'break-word' } }>{ item.description.substring(0 , 50) }</p>
+                                                </td>
+                                                <td onClick={ () => this.handleDetail(item) }>{ item.house }</td>
+                                                <td onClick={ () => this.handleDetail(item) }>{ item.isClaimed ? 'Claimed' : 'Pending' }</td>
+                                                <td>
+                                                    <div className="flex-box" style={ { minHeight: 'initial' } }>
+                                                        <Button color="primary" variant="contained"
+                                                                onClick={ () => this.handleDelete(item) }>Delete</Button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        ))
+                                    )
+                                }
+                                </tbody>
+                            </table>
+                        </div>
+                    </>
                 }
             </>
         );

@@ -1,0 +1,9 @@
+.model-image-container > img {
+    width: 50vw;
+    height: auto;
+    margin: 0 auto;
+}
+
+.model-image-container {
+    text-align: center;
+}

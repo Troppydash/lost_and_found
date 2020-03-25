@@ -1,0 +1,20 @@
+.menu-flex-box {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.LinkContainer {
+    padding: 15px;
+}
+
+.LinkContainer:hover {
+    background: #4b4b4b;
+
+    transition-duration: 0.1s;
+}
+.LinkContainer > a {
+    text-decoration: none;
+    color: white;
+    font-size: 2rem;
+}
