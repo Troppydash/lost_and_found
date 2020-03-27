@@ -3,7 +3,6 @@ import axios from 'axios';
 import { notify } from '../util/helpers';
 import './content.css';
 import dayjs from 'dayjs';
-import relativeTime from 'dayjs/plugin/relativeTime';
 import database from '../firebase';
 import AddFound from './addFound';
 import Divider from '@material-ui/core/Divider';
@@ -15,9 +14,17 @@ import similarity from 'similarity';
 import ConfirmModel from './confirmModel';
 import Button from '@material-ui/core/Button';
 import DetailModel from './detailModel';
-import GlobalSnackbar from './globalSnackbar';
+import { withStyles } from '@material-ui/core/styles';
+import Item from '../components/item';
 
-dayjs.extend(relativeTime);
+const useStyles = theme => ({
+    actionButton: {
+        margin: '3px 10px'
+    },
+    actionButtonContainer: {
+        maxWidth: '150px'
+    }
+});
 
 class Content extends Component {
     state = {
@@ -29,6 +36,7 @@ class Content extends Component {
 
         deleteItem: null ,
         detailItem: null ,
+        markItem: null
     };
 
     unSub = null;
@@ -100,6 +108,12 @@ class Content extends Component {
         });
     };
 
+    handleMark = item => {
+        this.setState({
+            markItem: item
+        })
+    };
+
     handleDetail = item => {
         this.setState({
             detailItem: item
@@ -107,6 +121,7 @@ class Content extends Component {
     };
 
     render() {
+        const { classes } = this.props;
         const labels = ['item type' , 'found at' , 'name' , 'description' , 'house' , 'is claimed' , ''];
         const { isLoading , hasError , items , query , deleteItem , detailItem } = this.state;
         return (
@@ -156,24 +171,21 @@ class Content extends Component {
                                             }
                                             return similarity(fullName , query) > 0.3;
 
-                                        }).map(( item , i ) => (
-                                            <tr key={ item.itemId }>
-                                                <td onClick={ () => this.handleDetail(item) }>{ item.itemType }</td>
-                                                <td onClick={ () => this.handleDetail(item) }>{ dayjs(item.foundAt).fromNow() }</td>
-                                                <td onClick={ () => this.handleDetail(item) }>{ `${ item.firstName } ${ item.lastName }` }</td>
-                                                <td style={ { maxWidth: '20vw' } }
-                                                    onClick={ () => this.handleDetail(item) }>
-                                                    <p style={ { wordWrap: 'break-word' } }>{ item.description.substring(0 , 50) }</p>
-                                                </td>
-                                                <td onClick={ () => this.handleDetail(item) }>{ item.house }</td>
-                                                <td onClick={ () => this.handleDetail(item) }>{ item.isClaimed ? 'Claimed' : 'Pending' }</td>
-                                                <td>
+                                        }).filter(v => v.status !== "claimed").map(( item , i ) => (
+                                            <Item item={item} handleDetail={this.handleDetail} key={i}>
+                                                <td className={classes.actionButtonContainer}>
                                                     <div className="flex-box" style={ { minHeight: 'initial' } }>
-                                                        <Button color="primary" variant="contained"
+                                                        {
+                                                            item.status === "pending" ? (
+                                                                <Button color="secondary" variant="contained" className={classes.actionButton}
+                                                                        onClick={ () => this.handleMark(item) }>Mark</Button>
+                                                            ) : null
+                                                        }
+                                                        <Button color="primary" variant="contained" className={classes.actionButton}
                                                                 onClick={ () => this.handleDelete(item) }>Delete</Button>
                                                     </div>
                                                 </td>
-                                            </tr>
+                                            </Item>
                                         ))
                                     ) : (isLoading && (
                                         <tr>
@@ -193,4 +205,4 @@ class Content extends Component {
     }
 }
 
-export default Content;
+export default withStyles(useStyles)(Content);
