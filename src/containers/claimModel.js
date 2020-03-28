@@ -2,48 +2,49 @@ import React , { useContext } from 'react';
 import { Dialog } from '@material-ui/core';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
+import Typography from '@material-ui/core/Typography';
 import DialogActions from '@material-ui/core/DialogActions';
 import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+
 import axios from 'axios';
-import { notify } from '../util/helpers';
 import { SnackbarContext } from '../util/SnackbarContext';
 
-function ConfirmModel({item, clearDeletedItem}) {
-    const {showSnackbar} = useContext(SnackbarContext);
+function ClaimModel({ item, clearClaimItem }) {
+    const { showSnackbar } = useContext(SnackbarContext);
 
-    const handleDelete = () => {
+    const handleClaim = () => {
 
-        axios.post('/found/deleteItem', { itemId: item.itemId })
+        axios.post('item/claimItem', {
+            itemId: item.itemId
+        })
             .then(res => {
-                notify('confirmModel.js', 'Delete Success');
-                showSnackbar('success', "Item successfully Deleted");
+                showSnackbar("success", res.data.message);
             })
             .catch(err => {
-                notify('confirmModel.js', 'Delete Failed');
-                showSnackbar('error', "There was a problem deleting your item");
-                console.error(err);
+                console.log(err);
+                showSnackbar("error", err.response.error);
             })
             .finally(() => {
                 handleClose();
-            })
+
+            });
     };
 
     const handleClose = () => {
-        clearDeletedItem();
+        clearClaimItem();
     };
 
     return (
         <Dialog open={true} onClose={handleClose} maxWidth="sm" fullWidth>
-            <DialogTitle>Delete this item?</DialogTitle>
+            <DialogTitle>Claim this item?</DialogTitle>
             <DialogContent>
                 <Typography variant="body1">
                     {item.itemType} by {item.firstName ? `${item.firstName}${(' ' + item.lastName) || ''}` : "Unknown"}
                 </Typography>
             </DialogContent>
             <DialogActions>
-                <Button onClick={handleDelete} color="primary">
-                    Delete
+                <Button onClick={handleClaim} color="primary">
+                    Claim
                 </Button>
                 <Button onClick={handleClose} color="secondary" autoFocus>
                     Cancel
@@ -53,5 +54,4 @@ function ConfirmModel({item, clearDeletedItem}) {
     );
 }
 
-export default ConfirmModel;
-
+export default ClaimModel;

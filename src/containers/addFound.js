@@ -158,7 +158,7 @@ function AddFound() {
     };
 
     return (
-        <div>
+        <div className="tiny-flex-box">
             <Button variant='outlined' color='primary' onClick={ handleClickOpen }>Insert New</Button>
             <Dialog open={ open } onClose={ handleClose } aria-labelledby="form-dialog-title" maxWidth="sm" fullWidth>
                 <DialogTitle id='form-dialog-title'>Insert New</DialogTitle>
@@ -288,11 +288,11 @@ function AddFound() {
 
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={ handleClose }>
-                        Cancel
-                    </Button>
                     <Button onClick={ handleSubmit } color="primary">
                         Submit
+                    </Button>
+                    <Button onClick={ handleClose } autoFocus>
+                        Cancel
                     </Button>
                 </DialogActions>
             </Dialog>

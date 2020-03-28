@@ -17,7 +17,7 @@ function DetailModel( { item , clearDetailItem } ) {
     return (
         <Dialog open={ true } onClose={ handleClose } maxWidth="lg">
             <DialogTitle>
-                { item.itemType } by { item.firstName ? `${ item.firstName }${ (' ' + item.lastName) || '' }` : 'Unknown' }
+                { item.itemType } of { item.firstName ? `${ item.firstName }${ (' ' + item.lastName) || '' }` : 'Unknown' }
             </DialogTitle>
             <DialogContent>
                 <div className="model-image-container">
@@ -30,7 +30,7 @@ function DetailModel( { item , clearDetailItem } ) {
                 </div>
             </DialogContent>
             <DialogActions>
-                <Button onClick={ handleClose } color="primary">
+                <Button onClick={ handleClose } color="primary" autoFocus>
                     Ok
                 </Button>
             </DialogActions>
