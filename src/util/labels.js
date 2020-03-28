@@ -1,2 +1,2 @@
-export const lostItemLabels = ['item type' , 'lostAt' , 'full name' , 'description' , 'house'];
-export const foundItemLabels = ['item type' , 'found at' , 'name' , 'description' , 'house' , 'status' , ''];
+export const lostItemLabels = ['Item type' , 'lostAt' , 'full name' , 'description' , 'house'];
+export const foundItemLabels = ['Item Type' , 'Found Date' , 'Name' , 'Description' , 'House' , 'Status' , ''];

@@ -11,7 +11,8 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import axios from 'axios';
 import { ThemeProvider } from '@material-ui/styles';
 //https://us-central1-lost-and-found-660fb.cloudfunctions.net/api
-axios.defaults.baseURL = 'http://localhost:5000/lost-and-found-660fb/us-central1/api';
+//http://localhost:5000/lost-and-found-660fb/us-central1/api
+axios.defaults.baseURL = 'https://us-central1-lost-and-found-660fb.cloudfunctions.net/api';
 
 const theme = createMuiTheme({
     palette: {

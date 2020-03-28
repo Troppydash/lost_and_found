@@ -12,7 +12,7 @@ function Item( {
     return (
         <tr key={ item.itemId }>
             <td onClick={ () => handleDetail(item) }>{ item.itemType }</td>
-            <td onClick={ () => handleDetail(item) }>{ dayjs(item.foundAt).format('DD/MM/YYYY mm:hh') }</td>
+            <td onClick={ () => handleDetail(item) }>{ dayjs(item.foundAt).format('DD/MM/YYYY hh:mm') }</td>
             <td onClick={ () => handleDetail(item) }>{ `${ item.firstName } ${ item.lastName }` }</td>
             <td style={ { maxWidth: '15vw' } }
                 onClick={ () => handleDetail(item) }>
