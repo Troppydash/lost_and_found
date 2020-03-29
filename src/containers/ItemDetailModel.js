@@ -5,11 +5,9 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogActions from '@material-ui/core/DialogActions';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import axios from 'axios';
-import { notify } from '../util/helpers';
-import './detailModel.css';
+import './styles/ItemDetailModel.css';
 
-function DetailModel( { item , clearDetailItem } ) {
+function ItemDetailModel( { item , clearDetailItem } ) {
     const handleClose = () => {
         clearDetailItem();
     };
@@ -39,4 +37,4 @@ function DetailModel( { item , clearDetailItem } ) {
 }
 
 
-export default DetailModel;
+export default ItemDetailModel;

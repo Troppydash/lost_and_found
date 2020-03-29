@@ -1,24 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3ef80f0b-f7dc-46d1-9865-f537ee16eaba" name="Default Changelist" comment="unfinished, need to add mark model">
-      <change afterPath="$PROJECT_DIR$/.idea/lost_and_found.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/lostPageContent.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/util/ListenerContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/$CACHE_FILE$" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/$CACHE_FILE$" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="3ef80f0b-f7dc-46d1-9865-f537ee16eaba" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/DataLayer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/css/global.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/styles/Table.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/styles/footer.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/footer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/SnackbarLayer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/item.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/foundItem.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/lostItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/lostItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/menu.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/menu.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/menu.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/styles/menu.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/menu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/addFound.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/addFound.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/content.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/content.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/globalSnackbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/globalSnackbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/addFound.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/AddItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/claimModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/ClaimItemModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/confirmModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/ConfirmItemModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/content.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/styles/Search.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/content.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/detailModel.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/styles/ItemDetailModel.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/detailModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/ItemDetailModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/globalSnackbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/globalSnackbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/itemCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/ItemCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/lostPageContent.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/markModel.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/styles/MarkItemModel.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/markModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/MarkItemModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/font.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/font.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/styles/header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/grid.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Found.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Found.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Lost.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Lost.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/helpers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/helpers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util/ListenerContext.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util/SnackbarContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/contexts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util/labels.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/labels.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,8 +48,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -56,6 +76,15 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="settings.nodejs" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Folder2020\Projects\LostProperty\lost_and_found\src\components" />
+      <recent name="E:\Folder2020\Projects\LostProperty\lost_and_found\src\pages" />
+      <recent name="E:\Folder2020\Projects\LostProperty\lost_and_found\src\containers\styles" />
+      <recent name="E:\Folder2020\Projects\LostProperty\lost_and_found\src\components\styles" />
+      <recent name="E:\Folder2020\Projects\LostProperty\lost_and_found\src\css" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
@@ -88,7 +117,7 @@
       <workItem from="1585337611033" duration="12687000" />
       <workItem from="1585373942335" duration="1701000" />
       <workItem from="1585436906466" duration="1915000" />
-      <workItem from="1585467688694" duration="3469000" />
+      <workItem from="1585467688694" duration="8094000" />
     </task>
     <task id="LOCAL-00001" summary="unfinished, need to add mark model">
       <created>1585301056287</created>
@@ -111,7 +140,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585437852692</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="unfinished">
+      <created>1585471176273</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1585471176273</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -134,13 +170,14 @@
     <MESSAGE value="unfinished, need to add mark model" />
     <MESSAGE value="Added Item Claiming" />
     <MESSAGE value="Test" />
-    <option name="LAST_COMMIT_MESSAGE" value="Test" />
+    <MESSAGE value="unfinished" />
+    <option name="LAST_COMMIT_MESSAGE" value="unfinished" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="559" y="111" key="CommitChangelistDialog2" timestamp="1585437850635">
+    <state x="559" y="111" key="CommitChangelistDialog2" timestamp="1585471173612">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="559" y="111" key="CommitChangelistDialog2/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585437850635" />
+    <state x="559" y="111" key="CommitChangelistDialog2/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585471173612" />
     <state x="184" y="86" key="DiffContextDialog" timestamp="1585437866039">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -169,10 +206,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="755" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585469136937" />
-    <state x="1920" y="-123" width="974" height="1028" maximized="true" key="dock-window-1" timestamp="1585470625501">
+    <state x="714" y="190" width="974" height="1028" key="dock-window-1" timestamp="1585471385833">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="714" y="190" width="974" height="1028" key="dock-window-1/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585471385833" />
+    <state x="1920" y="-123" width="974" height="1028" maximized="true" key="dock-window-2" timestamp="1585472063815">
       <screen x="1920" y="-123" width="960" height="1496" />
     </state>
-    <state x="1920" y="-123" width="974" height="1028" maximized="true" key="dock-window-1/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585470625501" />
+    <state x="1920" y="-123" width="974" height="1028" maximized="true" key="dock-window-2/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585472063815" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1585351311427">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

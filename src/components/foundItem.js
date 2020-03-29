@@ -1,13 +1,12 @@
 import dayjs from 'dayjs';
-import Button from '@material-ui/core/Button';
 import React from 'react';
 
-function Item( {
-                   item ,
-                   handleDetail = () => {
-                   } ,
-                   children
-               } ) {
+function FoundItem( {
+                        item ,
+                        handleDetail = () => {
+                        } ,
+                        children
+                    } ) {
 
     return (
         <tr key={ item.itemId }>
@@ -25,4 +24,4 @@ function Item( {
     );
 }
 
-export default Item;
+export default FoundItem;

@@ -4,16 +4,16 @@
     justify-content: left;
 }
 
-.LinkContainer {
+.menu-flex-box > * {
     padding: 15px;
 }
 
-.LinkContainer:hover {
+.menu-flex-box > *:hover {
     background: var(--scots-grey1);
 
     transition-duration: 0.1s;
 }
-.LinkContainer > a {
+.menu-flex-box a {
     text-decoration: none;
     color: white;
     font-size: 2rem;

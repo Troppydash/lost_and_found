@@ -1,21 +1,20 @@
-import { Dialog , DialogContent , DialogTitle , FormGroup } from '@material-ui/core';
 import React , { useContext , useEffect } from 'react';
-import Item from '../components/item';
+import { Dialog , DialogContent , DialogTitle , FormGroup } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import DialogActions from '@material-ui/core/DialogActions';
-import './markModel.css';
+import './styles/MarkItemModel.css';
 import axios from 'axios';
-import { SnackbarContext } from '../util/SnackbarContext';
+import { SnackbarContext } from '../util/contexts';
 import LostItem from '../components/lostItem';
 import Typography from '@material-ui/core/Typography';
-import { foundItemLabels , lostItemLabels } from '../util/labels';
+import { lostItemLabels } from '../util/labels';
 import { LOST_ITEM } from '../util/cachingKeys';
 import TextField from '@material-ui/core/TextField';
 import similarity from 'similarity';
-import ItemCard from './itemCard';
+import ItemCard from './ItemCard';
 
 
-function MarkModel( { item , clearMarkItem } ) {
+function MarkItemModel( { item , clearMarkItem } ) {
     const handleClose = () => {
         clearMarkItem();
     };
@@ -41,7 +40,7 @@ function MarkModel( { item , clearMarkItem } ) {
             .then(res => {
                 setIsLoading(false);
                 setLostItems(res.data);
-                localStorage.setItem(LOST_ITEM, JSON.stringify(res.data));
+                localStorage.setItem(LOST_ITEM , JSON.stringify(res.data));
             })
             .catch(err => {
                 setIsLoading(false);
@@ -52,30 +51,30 @@ function MarkModel( { item , clearMarkItem } ) {
     } , []);
 
     const handleSubmit = () => {
-        axios.post('/item/markItem', {
-            foundItemId: item.itemId,
+        axios.post('/item/markItem' , {
+            foundItemId: item.itemId ,
             lostItemId: selectedItem || ''
         })
             .then(res => {
-                showSnackbar('success', res.data.message);
+                showSnackbar('success' , res.data.message);
             })
             .catch(err => {
-                showSnackbar('error', err.response.error);
+                showSnackbar('error' , err.response.error);
             })
             .finally(() => {
                 handleClose();
-            })
+            });
     };
 
     return (
         <Dialog open={ true } onClose={ handleClose } maxWidth="lg" fullWidth>
             <DialogTitle>
-                {""}
+                { '' }
             </DialogTitle>
             <DialogContent>
                 <div className="markmodel-flex-box">
                     <div className="selected-item-container">
-                        <ItemCard item={item} />
+                        <ItemCard item={ item } />
                     </div>
                     <div className="lost-item-container">
                         <div className="header-text">
@@ -144,7 +143,8 @@ function MarkModel( { item , clearMarkItem } ) {
                         {
                             selectedItem && (
                                 <div>
-                                    <Typography variant='body1' color="secondary">Selected Item: {selectedItem}</Typography>
+                                    <Typography variant='body1' color="secondary">Selected
+                                        Item: { selectedItem }</Typography>
                                 </div>
                             )
                         }
@@ -163,4 +163,4 @@ function MarkModel( { item , clearMarkItem } ) {
     );
 }
 
-export default MarkModel;
+export default MarkItemModel;

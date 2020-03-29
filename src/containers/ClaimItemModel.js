@@ -7,22 +7,22 @@ import DialogActions from '@material-ui/core/DialogActions';
 import Button from '@material-ui/core/Button';
 
 import axios from 'axios';
-import { SnackbarContext } from '../util/SnackbarContext';
+import { SnackbarContext } from '../util/contexts';
 
-function ClaimModel({ item, clearClaimItem }) {
+function ClaimItemModel( { item , clearClaimItem } ) {
     const { showSnackbar } = useContext(SnackbarContext);
 
     const handleClaim = () => {
 
-        axios.post('item/claimItem', {
+        axios.post('item/claimItem' , {
             itemId: item.itemId
         })
             .then(res => {
-                showSnackbar("success", res.data.message);
+                showSnackbar('success' , res.data.message);
             })
             .catch(err => {
                 console.log(err);
-                showSnackbar("error", err.response.error);
+                showSnackbar('error' , err.response.error);
             })
             .finally(() => {
                 handleClose();
@@ -35,18 +35,18 @@ function ClaimModel({ item, clearClaimItem }) {
     };
 
     return (
-        <Dialog open={true} onClose={handleClose} maxWidth="sm" fullWidth>
+        <Dialog open={ true } onClose={ handleClose } maxWidth="sm" fullWidth>
             <DialogTitle>Claim this item?</DialogTitle>
             <DialogContent>
                 <Typography variant="body1">
-                    {item.itemType} by {item.firstName ? `${item.firstName}${(' ' + item.lastName) || ''}` : "Unknown"}
+                    { item.itemType } by { item.firstName ? `${ item.firstName }${ (' ' + item.lastName) || '' }` : 'Unknown' }
                 </Typography>
             </DialogContent>
             <DialogActions>
-                <Button onClick={handleClaim} color="primary">
+                <Button onClick={ handleClaim } color="primary">
                     Claim
                 </Button>
-                <Button onClick={handleClose} color="secondary" autoFocus>
+                <Button onClick={ handleClose } color="secondary" autoFocus>
                     Cancel
                 </Button>
             </DialogActions>
@@ -54,4 +54,4 @@ function ClaimModel({ item, clearClaimItem }) {
     );
 }
 
-export default ClaimModel;
+export default ClaimItemModel;

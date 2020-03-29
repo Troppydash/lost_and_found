@@ -1,23 +1,29 @@
 import React from 'react';
-import { Link , BrowserRouter as Router , } from 'react-router-dom';
-import './menu.css'
+import { Link } from 'react-router-dom';
+import './styles/menu.css';
 import { useLocation } from 'react-router-dom';
 
-function Menu( props ) {
-    let location = useLocation();
+function Menu() {
+    let location = useLocation().pathname;
     return (
         <>
             <div className="menu">
                 <div className="menu-flex-box">
-                    <div className={`LinkContainer ${location.pathname === "/" ? "SelectedLink" : ""}`}>
-                        <Link to="/">Home</Link>
-                    </div>
-                    <div className={`LinkContainer ${location.pathname === "/found" ? "SelectedLink" : ""}`}>
-                        <Link to="/found">Found</Link>
-                    </div>
-                    <div className={`LinkContainer ${location.pathname === "/lost" ? "SelectedLink" : ""}`}>
-                        <Link to="/lost">Lost</Link>
-                    </div>
+                    <Link to="/" className={ location === '/' ? 'SelectedLink' : '' }>
+                        <div>
+                            Home
+                        </div>
+                    </Link>
+                    <Link to="/found" className={ location === '/found' ? 'SelectedLink' : '' }>
+                        <div>
+                            Found
+                        </div>
+                    </Link>
+                    <Link to="/lost" className={ location === '/lost' ? 'SelectedLink' : '' }>
+                        <div>
+                            Lost
+                        </div>
+                    </Link>
                 </div>
             </div>
         </>

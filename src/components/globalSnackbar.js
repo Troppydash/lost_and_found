@@ -6,14 +6,14 @@ function Alert( props ) {
     return <MuiAlert elevation={ 6 } variant="filled" { ...props } />;
 }
 
-const GlobalSnackbar = ( { isShowing , type="info" , message , clearSnackBar } ) => {
+const GlobalSnackbar = ( { isShowing , type = 'info' , message , clearSnackBar } ) => {
     return (
         <>
             {
                 isShowing && (
                     <Snackbar open={ isShowing } autoHideDuration={ 3000 } onClose={ clearSnackBar }
                               anchorOrigin={ { vertical: 'bottom' , horizontal: 'right' } }>
-                        <Alert severity={ type || "info" }>{ message }</Alert>
+                        <Alert severity={ type || 'info' }>{ message }</Alert>
                     </Snackbar>
                 )
             }

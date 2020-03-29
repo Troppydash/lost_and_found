@@ -1,15 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import './font.css';
-import './global.css';
-import App from './App';
+import './css/grid.css';
+import './css/font.css';
+import './css/global.css';
 import * as serviceWorker from './serviceWorker';
 
 import { createMuiTheme } from '@material-ui/core/styles';
 
 import axios from 'axios';
 import { ThemeProvider } from '@material-ui/styles';
+import SnackbarLayer from './SnackbarLayer';
+
 //https://us-central1-lost-and-found-660fb.cloudfunctions.net/api
 //http://localhost:5000/lost-and-found-660fb/us-central1/api
 axios.defaults.baseURL = 'https://us-central1-lost-and-found-660fb.cloudfunctions.net/api';
@@ -33,7 +34,7 @@ const theme = createMuiTheme({
 
 ReactDOM.render(
     <ThemeProvider theme={theme}>
-        <App />
+        <SnackbarLayer />
     </ThemeProvider> ,
   document.getElementById('root')
 );

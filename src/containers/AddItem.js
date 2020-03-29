@@ -1,4 +1,4 @@
-import React , { Component , useContext } from 'react';
+import React , { useContext } from 'react';
 import Button from '@material-ui/core/Button';
 import { Dialog } from '@material-ui/core';
 import DialogTitle from '@material-ui/core/DialogTitle';
@@ -24,7 +24,7 @@ import {
 import axios from 'axios';
 import { notify } from '../util/helpers';
 import FormHelperText from '@material-ui/core/FormHelperText';
-import { SnackbarContext } from '../util/SnackbarContext';
+import { SnackbarContext } from '../util/contexts';
 
 const useStyles = makeStyles(theme => ({
     formControl: {
@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-function AddFound({ isLost = false }) {
+function AddItem( { isLost = false } ) {
     const { showSnackbar } = useContext(SnackbarContext);
 
     const initialState = {
@@ -71,8 +71,8 @@ function AddFound({ isLost = false }) {
         if (haveOthers && !others) {
             setFormError({
                 ...formError ,
-                others: 'Others must not be empty',
-                itemType: '',
+                others: 'Others must not be empty' ,
+                itemType: '' ,
             });
             return 0;
         }
@@ -82,13 +82,13 @@ function AddFound({ isLost = false }) {
             itemType: haveOthers ? others : itemType ,
             house: formData.house ,
             description: formData.description ,
-            [isLost ? "lostAt" : "foundAt"]: formData.time
+            [isLost ? 'lostAt' : 'foundAt']: formData.time
         };
 
         axios.post(isLost ? '/lost/addItem' : '/found/addItem' , itemToSubmit)
             .then(res => {
                 notify('addFound.js' , 'Item added successfully');
-                showSnackbar("success", "Item added successfully");
+                showSnackbar('success' , 'Item added successfully');
 
                 if (isLost || !formData.image) {
                     return 0;
@@ -188,7 +188,7 @@ function AddFound({ isLost = false }) {
                         </FormGroup>
 
                         <FormGroup>
-                            <FormControl error={formError.itemType}>
+                            <FormControl error={ formError.itemType }>
                                 <InputLabel id="itemType">Item Type</InputLabel>
                                 <Select
                                     labelId="itemType"
@@ -206,7 +206,7 @@ function AddFound({ isLost = false }) {
                                     <MenuItem value="Others">Others</MenuItem>
                                 </Select>
 
-                                {formError.itemType && <FormHelperText>{formError.itemType}</FormHelperText>}
+                                { formError.itemType && <FormHelperText>{ formError.itemType }</FormHelperText> }
 
                                 {
                                     haveOthers && (
@@ -275,7 +275,7 @@ function AddFound({ isLost = false }) {
                                     format="MM/dd/yyyy"
                                     margin="normal"
                                     id="time"
-                                    label={isLost ? "Lost At": "Found At"}
+                                    label={ isLost ? 'Lost At' : 'Found At' }
                                     name="time"
                                     value={ formData.time }
                                     onChange={ handleDateChange }
@@ -307,4 +307,4 @@ function AddFound({ isLost = false }) {
     );
 }
 
-export default AddFound;
+export default AddItem;
