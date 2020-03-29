@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-function AddFound() {
+function AddFound({ isLost = false }) {
     const { showSnackbar } = useContext(SnackbarContext);
 
     const initialState = {
@@ -40,7 +40,7 @@ function AddFound() {
         itemType: '' ,
         house: '' ,
         description: '' ,
-        foundAt: new Date().toISOString() ,
+        time: new Date().toISOString() ,
         image: false
     };
     const classes = useStyles();
@@ -77,17 +77,20 @@ function AddFound() {
             return 0;
         }
 
-        axios.post('/found/addItem' , {
+        let itemToSubmit = {
             name: formData.name ,
             itemType: haveOthers ? others : itemType ,
             house: formData.house ,
             description: formData.description ,
-            foundAt: formData.foundAt
-        })
+            [isLost ? "lostAt" : "foundAt"]: formData.time
+        };
+
+        axios.post(isLost ? '/lost/addItem' : '/found/addItem' , itemToSubmit)
             .then(res => {
                 notify('addFound.js' , 'Item added successfully');
+                showSnackbar("success", "Item added successfully");
 
-                if (!formData.image) {
+                if (isLost || !formData.image) {
                     return 0;
                 }
                 submitImage(res.data.itemId)
@@ -136,7 +139,7 @@ function AddFound() {
     const handleDateChange = e => {
         setFormData({
             ...formData ,
-            foundAt: e
+            time: e
         });
     };
 
@@ -271,19 +274,23 @@ function AddFound() {
                                     variant="inline"
                                     format="MM/dd/yyyy"
                                     margin="normal"
-                                    id="foundAt"
-                                    label="Found At"
-                                    name="foundAt"
-                                    value={ formData.foundAt }
+                                    id="time"
+                                    label={isLost ? "Lost At": "Found At"}
+                                    name="time"
+                                    value={ formData.time }
                                     onChange={ handleDateChange }
                                 />
                             </MuiPickersUtilsProvider>
                         </FormGroup>
 
-                        <FormGroup>
-                            <input type="file" id="imageInput" hidden onChange={ handleImageChange } />
-                            <Button onClick={ handleImage }>{ formData.image ? 'Change' : 'Add' } Image</Button>
-                        </FormGroup>
+                        {
+                            !isLost && (
+                                <FormGroup>
+                                    <input type="file" id="imageInput" hidden onChange={ handleImageChange } />
+                                    <Button onClick={ handleImage }>{ formData.image ? 'Change' : 'Add' } Image</Button>
+                                </FormGroup>
+                            )
+                        }
                     </form>
 
                 </DialogContent>

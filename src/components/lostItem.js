@@ -1,7 +1,7 @@
 import React from 'react';
 import dayjs from 'dayjs';
 
-const LostItem = ( { item, onClick, selectedItem } ) => {
+const LostItem = ( { item, onClick = () => {}, selectedItem = -1 } ) => {
     return (
         <tr onClick={onClick} className={selectedItem === item.itemId ? "selected-row": ""}>
             <td>{item.itemType}</td>

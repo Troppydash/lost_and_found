@@ -9,7 +9,7 @@
 }
 
 .LinkContainer:hover {
-    background: #4b4b4b;
+    background: var(--scots-grey1);
 
     transition-duration: 0.1s;
 }
@@ -17,4 +17,8 @@
     text-decoration: none;
     color: white;
     font-size: 2rem;
+}
+
+.SelectedLink {
+    background-color: var(--scots-grey2);
 }

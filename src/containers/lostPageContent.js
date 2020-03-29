@@ -16,35 +16,26 @@ import DetailModel from './detailModel';
 import { withStyles } from '@material-ui/core/styles';
 import Item from '../components/item';
 import MarkModel from './markModel';
-import { foundItemLabels } from '../util/labels';
-import { FOUND_ITEM } from '../util/cachingKeys';
+import { foundItemLabels , lostItemLabels } from '../util/labels';
+import { FOUND_ITEM , LOST_ITEM } from '../util/cachingKeys';
 import ClaimModel from './claimModel';
 import FormControl from '@material-ui/core/FormControl';
 import MenuItem from '@material-ui/core/MenuItem';
+import LostItem from '../components/lostItem';
 
-const useStyles = theme => ({
-    actionButton: {
-        margin: '3px 10px'
-    } ,
-    actionButtonContainer: {
-        minWidth: '200px'
-    }
-});
+const useStyles = theme => ({});
 
-class Content extends Component {
+class LostPageContent extends Component {
     state = {
         isLoading: false ,
         hasError: null ,
         items: [] ,
 
         query: '' ,
-        by: 'foundAt' ,
+        by: 'lostAt' ,
         order: 'desc' ,
 
         deleteItem: null ,
-        detailItem: null ,
-        markItem: null ,
-        claimItem: null
     };
 
     unSub = null;
@@ -52,12 +43,12 @@ class Content extends Component {
 
     componentDidMount() {
         this._isMounted = true;
-        notify('content.js' , 'Mounting Listener');
+        notify('lostPageContent.js' , 'Mounting Listener');
 
         // Get from cache
         if (this._isMounted) {
-            if (localStorage.getItem(FOUND_ITEM)) {
-                const items = JSON.parse(localStorage.getItem(FOUND_ITEM));
+            if (localStorage.getItem(LOST_ITEM)) {
+                const items = JSON.parse(localStorage.getItem(LOST_ITEM));
                 this.setState({
                     items
                 });
@@ -68,20 +59,20 @@ class Content extends Component {
             }
         }
 
-        this.unSub = database.collection('found').onSnapshot(() => {
+        this.unSub = database.collection('lost').onSnapshot(() => {
             if (this._isMounted) {
-                notify('content.js' , 'Listener Activated');
+                notify('lostPageContent.js' , 'Listener Activated');
                 this.fetchFromServerAndUpdateState();
             }
         } , err => {
-            notify('content.js' , 'Mounting Failed');
+            notify('lostPageContent.js' , 'Mounting Failed');
             console.error(err);
         });
     }
 
     componentWillUnmount() {
         if (this.unSub) {
-            notify('content.js' , 'Unmounting Listener');
+            notify('lostPageContent.js' , 'Unmounting Listener');
             this.unSub();
         }
         this._isMounted = false;
@@ -89,17 +80,17 @@ class Content extends Component {
     }
 
     fetchFromServerAndUpdateState = () => {
-        notify('content.js' , 'Fetching Items');
+        notify('lostPageContent.js' , 'Fetching Items');
 
         if (this._isMounted) {
             this.setState({
                 isLoading: true ,
             });
         }
-        axios.get('/found/getItems')
+        axios.get('/lost/getItems')
             .then(res => {
-                notify('content.js' , 'Fetching Success');
-                localStorage.setItem(FOUND_ITEM , JSON.stringify(res.data));
+                notify('lostPageContent.js' , 'Fetching Success');
+                localStorage.setItem(LOST_ITEM , JSON.stringify(res.data));
                 if (this._isMounted) {
                     this.setState({
                         isLoading: false ,
@@ -109,7 +100,7 @@ class Content extends Component {
                 }
             })
             .catch(err => {
-                notify('content.js' , 'Fetching Failed');
+                notify('lostPageContent.js' , 'Fetching Failed');
                 if (this._isMounted) {
                     this.setState({
                         isLoading: false ,
@@ -125,61 +116,26 @@ class Content extends Component {
         });
     };
 
-    handleMark = item => {
-        this.setState({
-            markItem: item
-        });
-    };
-
-    handleDetail = item => {
-        this.setState({
-            detailItem: item
-        });
-    };
-
-    handleClaim = item => {
-        this.setState({
-            claimItem: item
-        });
-    };
-
     render() {
         const { classes } = this.props;
 
-        const { isLoading , hasError , items , query , deleteItem , detailItem , markItem , claimItem , by , order } = this.state;
+        const { isLoading , hasError , items , query , deleteItem , by , order } = this.state;
         return (
             <>
                 {
                     deleteItem ? <ConfirmModel item={ deleteItem }
                                                clearDeletedItem={ () => this.setState({ deleteItem: null }) } /> : null
                 }
-
-                {
-                    detailItem ? <DetailModel item={ detailItem }
-                                              clearDetailItem={ () => this.setState({ detailItem: null }) } /> : null
-                }
-
-                {
-                    markItem ? <MarkModel item={ markItem }
-                                          clearMarkItem={ () => this.setState({ markItem: null }) } /> : null
-                }
-
-                {
-                    claimItem && <ClaimModel item={ claimItem }
-                                             clearClaimItem={ () => this.setState({ claimItem: null }) } />
-                }
-
                 <div className='action-flex-box'>
                     {
-                        (by !== 'status' || by !== 'foundAt') && (
-                            <div className="tiny-flex-box">
-                                <Typography variant="h6" color="primary">Query</Typography>
-                                <FormGroup>
-                                    <TextField size="small" style={ { background: '#f2f2f2' } } value={ query }
-                                               onChange={ e => this.setState({ query: e.target.value.toLowerCase() }) } />
-                                </FormGroup>
-                            </div>
-                        )
+                        <div className="tiny-flex-box">
+                            <Typography variant="h6" color="primary">Query</Typography>
+                            <FormGroup>
+                                <TextField size="small" style={ { background: '#f2f2f2' } } value={ query }
+                                           onChange={ e => this.setState({ query: e.target.value.toLowerCase() }) } />
+                            </FormGroup>
+                        </div>
+
                     }
                     <div className="tiny-flex-box">
                         <Typography variant="h6" color="primary">By</Typography>
@@ -193,8 +149,7 @@ class Content extends Component {
                                 <MenuItem value="lastName">Last Name</MenuItem>
                                 <MenuItem value="house">House</MenuItem>
                                 <MenuItem value="description">Description</MenuItem>
-                                <MenuItem value="status">Status</MenuItem>
-                                <MenuItem value="foundAt">Date</MenuItem>
+                                <MenuItem value="lostAt">Date</MenuItem>
                             </TextField>
                         </FormGroup>
                     </div>
@@ -209,7 +164,7 @@ class Content extends Component {
                             </TextField>
                         </FormGroup>
                     </div>
-                    <AddFound />
+                    <AddFound isLost={true}/>
                 </div>
 
                 <Divider />
@@ -222,7 +177,7 @@ class Content extends Component {
                                 <thead>
                                 <tr>
                                     {
-                                        foundItemLabels.map(( item , key ) => (
+                                        lostItemLabels.map(( item , key ) => (
                                             <th key={ key }>{ item }</th>
                                         ))
                                     }
@@ -240,11 +195,6 @@ class Content extends Component {
                                                     }
                                                     return similarity(fullName , query) > 0.3;
                                                 }
-
-                                                if (!v[by]) {
-                                                    return false;
-                                                }
-
                                                 let value = v[by].toLowerCase();
                                                 if (value.includes(query) || !query) {
                                                     return true;
@@ -252,7 +202,6 @@ class Content extends Component {
                                                 return similarity(value , query) > 0.3;
 
                                             })
-                                            .filter(v => v.status !== 'claimed' || by === 'status')
                                             .sort(( a , b ) => {
                                                 let value1 = a[by];
                                                 let value2 = b[by];
@@ -279,31 +228,7 @@ class Content extends Component {
                                                 return 0;
                                             })
                                             .map(( item , i ) => (
-                                                <Item item={ item } handleDetail={ this.handleDetail } key={ i }>
-                                                    <td className={ classes.actionButtonContainer }>
-                                                        <div className="flex-box" style={ { minHeight: 'initial' } }>
-                                                            {
-                                                                item.status === 'pending' ? (
-                                                                    <Button color="secondary" variant="contained"
-                                                                            className={ classes.actionButton }
-                                                                            onClick={ () => this.handleMark(item) }
-                                                                            style={ { color: 'white' } }>Mark</Button>
-                                                                ) : null
-                                                            }
-                                                            {
-                                                                item.status === 'marked' ? (
-                                                                    <Button color="secondary" variant="contained"
-                                                                            className={ classes.actionButton }
-                                                                            onClick={ () => this.handleClaim(item) }
-                                                                            style={ { color: 'white' } }>Claim</Button>
-                                                                ) : null
-                                                            }
-                                                            <Button color="primary" variant="contained"
-                                                                    className={ classes.actionButton }
-                                                                    onClick={ () => this.handleDelete(item) }>Delete</Button>
-                                                        </div>
-                                                    </td>
-                                                </Item>
+                                                <LostItem item={ item } key={i} />
                                             ))
                                     ) : (isLoading && (
                                         <tr>
@@ -323,4 +248,4 @@ class Content extends Component {
     }
 }
 
-export default withStyles(useStyles)(Content);
+export default withStyles(useStyles)(LostPageContent);

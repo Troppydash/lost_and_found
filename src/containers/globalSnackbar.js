@@ -9,10 +9,14 @@ function Alert( props ) {
 const GlobalSnackbar = ( { isShowing , type="info" , message , clearSnackBar } ) => {
     return (
         <>
-            <Snackbar open={ isShowing } autoHideDuration={ 3000 } onClose={ clearSnackBar }
-                      anchorOrigin={ { vertical: 'bottom' , horizontal: 'right' } }>
-                <Alert severity={ type }>{ message }</Alert>
-            </Snackbar>
+            {
+                isShowing && (
+                    <Snackbar open={ isShowing } autoHideDuration={ 3000 } onClose={ clearSnackBar }
+                              anchorOrigin={ { vertical: 'bottom' , horizontal: 'right' } }>
+                        <Alert severity={ type || "info" }>{ message }</Alert>
+                    </Snackbar>
+                )
+            }
         </>
     );
 };

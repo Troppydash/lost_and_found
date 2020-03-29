@@ -6,9 +6,7 @@ const Found = () => {
     return (
         <>
             <div className="content">
-
                 <Content />
-
             </div>
         </>
     );
