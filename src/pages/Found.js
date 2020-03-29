@@ -205,7 +205,7 @@ class Found extends Component {
                                                     .map(( item , i ) => (
                                                         <FoundItem item={ item } handleDetail={ this.handleDetail }
                                                                    key={ i }>
-                                                            <td className={ classes.actionButtonContainer }>
+                                                            <td className={ classes.actionButtonContainer + " actions" }>
                                                                 <div className="flex-box"
                                                                      style={ { minHeight: 'initial' } }>
                                                                     {

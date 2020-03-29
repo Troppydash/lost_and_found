@@ -7,13 +7,14 @@ import DialogActions from '@material-ui/core/DialogActions';
 import Button from '@material-ui/core/Button';
 
 import axios from 'axios';
-import { SnackbarContext } from '../util/contexts';
+import { LoadingbarContext , SnackbarContext } from '../util/contexts';
 
 function ClaimItemModel( { item , clearClaimItem } ) {
     const { showSnackbar } = useContext(SnackbarContext);
+    const { startLoadingBar , stopLoadingBar } = useContext(LoadingbarContext);
 
     const handleClaim = () => {
-
+        startLoadingBar();
         axios.post('item/claimItem' , {
             itemId: item.itemId
         })
@@ -26,7 +27,7 @@ function ClaimItemModel( { item , clearClaimItem } ) {
             })
             .finally(() => {
                 handleClose();
-
+                stopLoadingBar();
             });
     };
 

@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button';
 import DialogActions from '@material-ui/core/DialogActions';
 import './styles/MarkItemModel.css';
 import axios from 'axios';
-import { SnackbarContext } from '../util/contexts';
+import { LoadingbarContext , SnackbarContext } from '../util/contexts';
 import LostItem from '../components/lostItem';
 import Typography from '@material-ui/core/Typography';
 import { lostItemLabels } from '../util/labels';
@@ -20,6 +20,7 @@ function MarkItemModel( { item , clearMarkItem } ) {
     };
 
     const { showSnackbar } = useContext(SnackbarContext);
+    const { startLoadingBar , stopLoadingBar } = useContext(LoadingbarContext);
 
     const [lostItems , setLostItems] = React.useState([]);
     const [error , setError] = React.useState(null);
@@ -35,6 +36,7 @@ function MarkItemModel( { item , clearMarkItem } ) {
         } else {
             setIsLoading(true);
         }
+        startLoadingBar();
         // Get all lost items
         axios.get('/lost/getItems')
             .then(res => {
@@ -46,11 +48,15 @@ function MarkItemModel( { item , clearMarkItem } ) {
                 setIsLoading(false);
                 setError(err);
                 showSnackbar('error' , 'There was an problem fetching the items');
-            });
+            })
+            .finally(() => {
+                stopLoadingBar();
+            })
 
     } , []);
 
     const handleSubmit = () => {
+        startLoadingBar();
         axios.post('/item/markItem' , {
             foundItemId: item.itemId ,
             lostItemId: selectedItem || ''
@@ -63,6 +69,7 @@ function MarkItemModel( { item , clearMarkItem } ) {
             })
             .finally(() => {
                 handleClose();
+                startLoadingBar();
             });
     };
 

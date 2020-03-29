@@ -14,8 +14,17 @@ import { foundItemLabels , lostItemLabels } from '../util/labels';
 import MenuItem from '@material-ui/core/MenuItem';
 import LostItem from '../components/lostItem';
 import { ListenerContext } from '../util/contexts';
+import Button from '@material-ui/core/Button';
+import FoundItem from '../components/foundItem';
 
-const useStyles = theme => ({});
+const useStyles = theme => ({
+    actionButton: {
+        margin: '3px 10px'
+    } ,
+    actionButtonContainer: {
+        minWidth: '200px'
+    }
+});
 
 class Lost extends Component {
     state = {
@@ -39,7 +48,7 @@ class Lost extends Component {
         return (
             <>
                 {
-                    deleteItem ? <ConfirmItemModel item={ deleteItem }
+                    deleteItem ? <ConfirmItemModel item={ deleteItem } isLost={ true }
                                                    clearDeletedItem={ () => this.setState({ deleteItem: null }) } /> : null
                 }
                 <div className='action-flex-box'>
@@ -144,7 +153,16 @@ class Lost extends Component {
                                                         return 0;
                                                     })
                                                     .map(( item , i ) => (
-                                                        <LostItem item={ item } key={ i } />
+                                                        <LostItem item={ item } key={ i }>
+                                                            <td className={ classes.actionButtonContainer + " actions" }>
+                                                                <div className="flex-box"
+                                                                     style={ { minHeight: 'initial' } }>
+                                                                    <Button color="primary" variant="contained"
+                                                                            className={ classes.actionButton }
+                                                                            onClick={ () => this.handleDelete(item) }>Delete</Button>
+                                                                </div>
+                                                            </td>
+                                                        </LostItem>
                                                     ))
                                             ) : (isLoading && (
                                                 <tr>

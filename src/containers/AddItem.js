@@ -24,7 +24,7 @@ import {
 import axios from 'axios';
 import { notify } from '../util/helpers';
 import FormHelperText from '@material-ui/core/FormHelperText';
-import { SnackbarContext } from '../util/contexts';
+import { LoadingbarContext , SnackbarContext } from '../util/contexts';
 
 const useStyles = makeStyles(theme => ({
     formControl: {
@@ -34,6 +34,7 @@ const useStyles = makeStyles(theme => ({
 
 function AddItem( { isLost = false } ) {
     const { showSnackbar } = useContext(SnackbarContext);
+    const { startLoadingBar , stopLoadingBar } = useContext(LoadingbarContext);
 
     const initialState = {
         name: '' ,
@@ -84,13 +85,14 @@ function AddItem( { isLost = false } ) {
             description: formData.description ,
             [isLost ? 'lostAt' : 'foundAt']: formData.time
         };
-
+        startLoadingBar();
         axios.post(isLost ? '/lost/addItem' : '/found/addItem' , itemToSubmit)
             .then(res => {
                 notify('addFound.js' , 'Item added successfully');
                 showSnackbar('success' , 'Item added successfully');
 
                 if (isLost || !formData.image) {
+                    stopLoadingBar();
                     return 0;
                 }
                 submitImage(res.data.itemId)
@@ -103,7 +105,10 @@ function AddItem( { isLost = false } ) {
                         showSnackbar('error' , 'There was an problem adding your image');
                         console.error(err);
                         return 0;
-                    });
+                    })
+                    .finally(() => {
+                        stopLoadingBar();
+                    })
             })
             .then(() => {
                 handleClose();

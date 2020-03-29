@@ -7,14 +7,15 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import axios from 'axios';
 import { notify } from '../util/helpers';
-import { SnackbarContext } from '../util/contexts';
+import { LoadingbarContext , SnackbarContext } from '../util/contexts';
 
-function ConfirmItemModel( { item , clearDeletedItem } ) {
+function ConfirmItemModel( { item , clearDeletedItem, isLost = false } ) {
     const { showSnackbar } = useContext(SnackbarContext);
+    const { startLoadingBar , stopLoadingBar } = useContext(LoadingbarContext);
 
     const handleDelete = () => {
-
-        axios.post('/found/deleteItem' , { itemId: item.itemId })
+        startLoadingBar();
+        axios.post(isLost ? '/lost/deleteItem' : '/found/deleteItem' , { itemId: item.itemId })
             .then(res => {
                 notify('confirmModel.js' , 'Delete Success');
                 showSnackbar('success' , 'Item successfully Deleted');
@@ -26,6 +27,7 @@ function ConfirmItemModel( { item , clearDeletedItem } ) {
             })
             .finally(() => {
                 handleClose();
+                stopLoadingBar();
             });
     };
 

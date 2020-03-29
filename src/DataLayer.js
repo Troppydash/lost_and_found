@@ -1,4 +1,4 @@
-import React , { useEffect } from 'react';
+import React , { useContext , useEffect } from 'react';
 import {
     Switch ,
     Route ,
@@ -7,13 +7,15 @@ import {
 import Lost from './pages/Lost';
 import Found from './pages/Found';
 import Home from './pages/Home';
-import { ListenerContext } from './util/contexts';
+import { ListenerContext , LoadingbarContext } from './util/contexts';
 import { notify } from './util/helpers';
 import { FOUND_ITEM , LOST_ITEM } from './util/cachingKeys';
 import database from './firebase';
 import axios from 'axios';
 
 function DataLayer() {
+    const { startLoadingBar , stopLoadingBar } = useContext(LoadingbarContext);
+
     const [foundData , setFoundData] = React.useState({
         isLoading: false ,
         hasError: null ,
@@ -71,6 +73,7 @@ function DataLayer() {
 
             subsFound = database.collection('found').onSnapshot(() => {
                 if (isMounted) {
+                    startLoadingBar();
                     notify('app.js' , 'Found Listener Activated');
 
                     axios.get('/found/getItems')
@@ -94,7 +97,10 @@ function DataLayer() {
                                     hasError: err ,
                                 });
                             }
-                        });
+                        })
+                        .finally(() => {
+                            stopLoadingBar();
+                        })
 
                 }
                 resolve();

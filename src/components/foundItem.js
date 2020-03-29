@@ -10,15 +10,15 @@ function FoundItem( {
 
     return (
         <tr key={ item.itemId }>
-            <td onClick={ () => handleDetail(item) }>{ item.itemType }</td>
-            <td onClick={ () => handleDetail(item) }>{ dayjs(item.foundAt).format('DD/MM/YYYY hh:mm') }</td>
-            <td onClick={ () => handleDetail(item) }>{ `${ item.firstName } ${ item.lastName }` }</td>
-            <td style={ { maxWidth: '15vw' } }
+            <td onClick={ () => handleDetail(item) } className="itemType">{ item.itemType }</td>
+            <td onClick={ () => handleDetail(item) } className="date">{ dayjs(item.foundAt).format('DD/MM/YYYY hh:mm') }</td>
+            <td onClick={ () => handleDetail(item) } className="name">{ `${ item.firstName } ${ item.lastName }` }</td>
+            <td style={ { maxWidth: '15vw' } } className="description"
                 onClick={ () => handleDetail(item) }>
                 <p style={ { wordWrap: 'break-word' } }>{ item.description.substring(0 , 50) }</p>
             </td>
-            <td onClick={ () => handleDetail(item) }>{ item.house }</td>
-            <td onClick={ () => handleDetail(item) }>{ item.status }</td>
+            <td onClick={ () => handleDetail(item) } className="house">{ item.house }</td>
+            <td onClick={ () => handleDetail(item) } className="status">{ item.status }</td>
             { children }
         </tr>
     );

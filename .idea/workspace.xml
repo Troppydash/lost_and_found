@@ -2,43 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3ef80f0b-f7dc-46d1-9865-f537ee16eaba" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/DataLayer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/css/global.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/styles/Table.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/LoadingBarLayer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/styles/footer.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/footer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/SnackbarLayer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/item.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/foundItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataLayer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataLayer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SnackbarLayer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/SnackbarLayer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/foundItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/foundItem.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/lostItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/lostItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/menu.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/styles/menu.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/menu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/addFound.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/AddItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/claimModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/ClaimItemModel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/confirmModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/ConfirmItemModel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/content.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/styles/Search.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/content.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/detailModel.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/styles/ItemDetailModel.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/detailModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/ItemDetailModel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/globalSnackbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/globalSnackbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/itemCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/ItemCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/lostPageContent.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/markModel.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/styles/MarkItemModel.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/markModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/MarkItemModel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/font.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/font.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/styles/header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/grid.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/AddItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/AddItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/ClaimItemModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/ClaimItemModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/ConfirmItemModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/ConfirmItemModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/MarkItemModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/MarkItemModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/css/grid.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/grid.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Found.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Found.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Lost.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Lost.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/ListenerContext.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/SnackbarContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/contexts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/labels.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/labels.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/styles/Table.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/styles/Table.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util/contexts.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/contexts.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,8 +30,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -76,6 +58,7 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="settings.nodejs" />
+    <property name="ts.external.directory.path" value="D:\Windows\Jetbrains\apps\WebStorm\ch-0\193.6494.34\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -117,7 +100,8 @@
       <workItem from="1585337611033" duration="12687000" />
       <workItem from="1585373942335" duration="1701000" />
       <workItem from="1585436906466" duration="1915000" />
-      <workItem from="1585467688694" duration="8094000" />
+      <workItem from="1585467688694" duration="8518000" />
+      <workItem from="1585516562937" duration="2715000" />
     </task>
     <task id="LOCAL-00001" summary="unfinished, need to add mark model">
       <created>1585301056287</created>
@@ -147,7 +131,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585471176273</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Changed Some folder locations, added the lost page, renamed some files, redone the context stacking.">
+      <created>1585476327516</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1585476327516</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -171,41 +162,42 @@
     <MESSAGE value="Added Item Claiming" />
     <MESSAGE value="Test" />
     <MESSAGE value="unfinished" />
-    <option name="LAST_COMMIT_MESSAGE" value="unfinished" />
+    <MESSAGE value="Changed Some folder locations, added the lost page, renamed some files, redone the context stacking." />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed Some folder locations, added the lost page, renamed some files, redone the context stacking." />
   </component>
   <component name="WindowStateProjectService">
-    <state x="559" y="111" key="CommitChangelistDialog2" timestamp="1585471173612">
+    <state x="559" y="111" key="CommitChangelistDialog2" timestamp="1585476323231">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="559" y="111" key="CommitChangelistDialog2/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585471173612" />
+    <state x="559" y="111" key="CommitChangelistDialog2/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585476323231" />
     <state x="184" y="86" key="DiffContextDialog" timestamp="1585437866039">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="184" y="86" key="DiffContextDialog/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585437866039" />
-    <state width="1901" height="217" key="GridCell.Tab.0.bottom" timestamp="1585468163751">
+    <state width="1901" height="217" key="GridCell.Tab.0.bottom" timestamp="1585518128399">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1901" height="217" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585468163751" />
-    <state width="1901" height="217" key="GridCell.Tab.0.center" timestamp="1585468163751">
+    <state width="1901" height="217" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585518128399" />
+    <state width="1901" height="217" key="GridCell.Tab.0.center" timestamp="1585518128398">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1901" height="217" key="GridCell.Tab.0.center/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585468163751" />
-    <state width="1901" height="217" key="GridCell.Tab.0.left" timestamp="1585468163750">
+    <state width="1901" height="217" key="GridCell.Tab.0.center/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585518128398" />
+    <state width="1901" height="217" key="GridCell.Tab.0.left" timestamp="1585518128398">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1901" height="217" key="GridCell.Tab.0.left/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585468163750" />
-    <state width="1901" height="217" key="GridCell.Tab.0.right" timestamp="1585468163751">
+    <state width="1901" height="217" key="GridCell.Tab.0.left/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585518128398" />
+    <state width="1901" height="217" key="GridCell.Tab.0.right" timestamp="1585518128399">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1901" height="217" key="GridCell.Tab.0.right/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585468163751" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1585437866927">
+    <state width="1901" height="217" key="GridCell.Tab.0.right/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585518128399" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1585476330477">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585437866927" />
-    <state x="755" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585469136937">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585476330477" />
+    <state x="755" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585518227895">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="755" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585469136937" />
+    <state x="755" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585518227895" />
     <state x="714" y="190" width="974" height="1028" key="dock-window-1" timestamp="1585471385833">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

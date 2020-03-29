@@ -6,7 +6,6 @@
           'menu menu'
           'content content'
           'footer footer';
-  grid-gap: 5px;
 }
 
 .header {

@@ -4,9 +4,12 @@ import Footer from './components/footer';
 import React from 'react';
 import DataLayer from './DataLayer';
 
-function App() {
+function App(props) {
     return (
         <div className="grid-container">
+            {
+                props.children
+            }
             <Header />
             <Menu />
 

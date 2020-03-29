@@ -36,22 +36,22 @@ tbody > tr:hover {
     cursor: pointer;
 }
 
-td:nth-child(1),
-td:nth-child(4) {
+td.itemType,
+td.description {
     background-color: var(--scots-red);
 }
 
-td:nth-child(2),
-td:nth-child(5) {
+td.date,
+td.house {
     background-color: var(--scots-grey1);
 }
 
-td:nth-child(7) {
+td.actions {
     background-color: #f2f2f2;
 }
 
-td:nth-child(3),
-td:nth-child(6) {
+td.name ,
+td.status {
     background-color: var(--scots-grey2);
 }
 
