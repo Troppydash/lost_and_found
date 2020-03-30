@@ -1,0 +1,25 @@
+.matching-item-container {
+    margin: 30px 30px;
+}
+
+.matching-item-title {
+    font-size: 1rem;
+    color: var(--scots-red);
+}
+
+.matching-item-table td {
+    width: 18%;
+    padding: 10px;
+}
+
+.matching-item-table th {
+    padding: 5px;
+}
+
+.title {
+    margin: 15px 30px;
+}
+
+.matching-table-container {
+    padding: 5px;
+}

@@ -2,7 +2,6 @@ import React from 'react';
 import GlobalSnackbar from './components/globalSnackbar';
 import { SnackbarContext } from './util/contexts';
 import {BrowserRouter as Router } from 'react-router-dom';
-import App from './App';
 import LoadingBarLayer from './LoadingBarLayer';
 
 const initialValue = {

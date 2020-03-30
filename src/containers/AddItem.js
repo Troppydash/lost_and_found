@@ -108,7 +108,7 @@ function AddItem( { isLost = false } ) {
                     })
                     .finally(() => {
                         stopLoadingBar();
-                    })
+                    });
             })
             .then(() => {
                 handleClose();
@@ -193,7 +193,7 @@ function AddItem( { isLost = false } ) {
                         </FormGroup>
 
                         <FormGroup>
-                            <FormControl error={ formError.itemType }>
+                            <FormControl error={ !!formError.itemType }>
                                 <InputLabel id="itemType">Item Type</InputLabel>
                                 <Select
                                     labelId="itemType"

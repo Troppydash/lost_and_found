@@ -9,7 +9,7 @@ import Found from './pages/Found';
 import Home from './pages/Home';
 import { ListenerContext , LoadingbarContext } from './util/contexts';
 import { notify } from './util/helpers';
-import { FOUND_ITEM , LOST_ITEM } from './util/cachingKeys';
+import { FOUND_ITEM , LOST_ITEM , SIMILAR_ITEM } from './util/cachingKeys';
 import database from './firebase';
 import axios from 'axios';
 
@@ -28,6 +28,11 @@ function DataLayer() {
         items: []
     });
 
+    const [similarItems , setSimilarItems] = React.useState({
+        isLoading: false ,
+        hasError: null ,
+        items: []
+    });
     let subsFound = null;
     let subsLost = null;
 
@@ -35,14 +40,20 @@ function DataLayer() {
 
     useEffect(() => {
         // register both listeners
-
         setIsMounted(true);
         if (isMounted) {
             notify('app.js' , 'Mounting Both Listeners');
 
-            // Found First
-            fetchFound();
-            fetchLost();
+            (async function () {
+                startLoadingBar();
+
+                await fetchFound();
+                await fetchLost();
+                await fetchSimilarItems();
+
+                stopLoadingBar();
+            }())
+
         }
 
         return () => {
@@ -55,6 +66,50 @@ function DataLayer() {
             }
         };
     } , []);
+
+    const fetchSimilarItems = () => {
+        return new Promise((resolve => {
+            if (isMounted) {
+                if (localStorage.getItem(SIMILAR_ITEM)) {
+                    const items = JSON.parse(localStorage.getItem(SIMILAR_ITEM));
+                    setSimilarItems({
+                        ...similarItems ,
+                        items
+                    });
+                } else {
+                    setSimilarItems({
+                        ...similarItems ,
+                        isLoading: true
+                    });
+                }
+            }
+
+            axios.get('/similarItems')
+                .then(res => {
+                    localStorage.setItem(SIMILAR_ITEM , JSON.stringify(res.data));
+                    if (isMounted) {
+                        setSimilarItems({
+                            items: res.data ,
+                            hasError: null ,
+                            isLoading: false
+                        });
+                    }
+                })
+                .catch(err => {
+                    if (isMounted) {
+                        setSimilarItems({
+                            ...similarItems ,
+                            hasError: err.response ,
+                            isLoading: false
+                        });
+                    }
+                    console.log(err);
+                })
+                .finally(() => {
+                    resolve();
+                });
+        }));
+    };
 
     const fetchFound = () => {
         return new Promise((resolve => {
@@ -73,7 +128,6 @@ function DataLayer() {
 
             subsFound = database.collection('found').onSnapshot(() => {
                 if (isMounted) {
-                    startLoadingBar();
                     notify('app.js' , 'Found Listener Activated');
 
                     axios.get('/found/getItems')
@@ -98,10 +152,6 @@ function DataLayer() {
                                 });
                             }
                         })
-                        .finally(() => {
-                            stopLoadingBar();
-                        })
-
                 }
                 resolve();
             } , err => {
@@ -152,8 +202,7 @@ function DataLayer() {
                                     hasError: err ,
                                 });
                             }
-                        });
-
+                        })
                 }
                 resolve();
             } , err => {
@@ -165,7 +214,7 @@ function DataLayer() {
     };
 
     return (
-        <ListenerContext.Provider value={ { foundData , lostData } }>
+        <ListenerContext.Provider value={ { foundData , lostData, similarItems, fetchSimilarItems } }>
             <Switch>
                 <Route exact path='/lost'>
                     <Lost />

@@ -18,6 +18,7 @@ import { foundItemLabels } from '../util/labels';
 import ClaimItemModel from '../containers/ClaimItemModel';
 import MenuItem from '@material-ui/core/MenuItem';
 import { ListenerContext } from '../util/contexts';
+import UnmarkItemModel from '../containers/UnmarkItemModel';
 
 const useStyles = theme => ({
     actionButton: {
@@ -37,7 +38,8 @@ class Found extends Component {
         deleteItem: null ,
         detailItem: null ,
         markItem: null ,
-        claimItem: null
+        claimItem: null ,
+        unmarkItem: null
     };
 
     handleDelete = item => {
@@ -64,10 +66,16 @@ class Found extends Component {
         });
     };
 
+    handleUnmark = item => {
+        this.setState({
+            unmarkItem: item
+        });
+    };
+
     render() {
         const { classes } = this.props;
 
-        const { query , deleteItem , detailItem , markItem , claimItem , by , order } = this.state;
+        const { query , deleteItem , detailItem , markItem , claimItem , by , order , unmarkItem } = this.state;
         return (
             <>
                 {
@@ -88,6 +96,10 @@ class Found extends Component {
                 {
                     claimItem && <ClaimItemModel item={ claimItem }
                                                  clearClaimItem={ () => this.setState({ claimItem: null }) } />
+                }
+                {
+                    unmarkItem && <UnmarkItemModel item={ unmarkItem }
+                                                   clearUnmarkItem={ () => this.setState({ unmarkItem: null }) } />
                 }
 
                 <div className='action-flex-box'>
@@ -205,7 +217,7 @@ class Found extends Component {
                                                     .map(( item , i ) => (
                                                         <FoundItem item={ item } handleDetail={ this.handleDetail }
                                                                    key={ i }>
-                                                            <td className={ classes.actionButtonContainer + " actions" }>
+                                                            <td className={ classes.actionButtonContainer + ' actions' }>
                                                                 <div className="flex-box"
                                                                      style={ { minHeight: 'initial' } }>
                                                                     {
@@ -215,7 +227,13 @@ class Found extends Component {
                                                                                     className={ classes.actionButton }
                                                                                     onClick={ () => this.handleMark(item) }
                                                                                     style={ { color: 'white' } }>Mark</Button>
-                                                                        ) : null
+                                                                        ) : (item.status === 'marked' ? (
+                                                                            <Button color="secondary"
+                                                                                    variant="contained"
+                                                                                    className={ classes.actionButton }
+                                                                                    onClick={ () => this.handleUnmark(item) }
+                                                                                    style={ { color: 'white' } }>Unmark</Button>
+                                                                        ) : null)
                                                                     }
                                                                     {
                                                                         item.status === 'marked' ? (

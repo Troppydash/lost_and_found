@@ -4,6 +4,7 @@ import LoadingBar from 'react-top-loading-bar';
 import { LoadingbarContext } from './util/contexts';
 
 function LoadingBarLayer() {
+
     let loadingbar = null;
     const startLoadingBar = () => {
         if (loadingbar) {
@@ -25,7 +26,7 @@ function LoadingBarLayer() {
                         height={ 3 }
                         color='#96020c'
                         onRef={ ref => loadingbar = ref }
-                        style={{position: 'absolute'}}
+                        style={ { position: 'absolute' } }
                     />
                 </App>
             </LoadingbarContext.Provider>

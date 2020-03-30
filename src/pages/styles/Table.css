@@ -27,7 +27,7 @@
     border-right: 5px solid white;
 }
 
-tbody > tr:hover {
+tbody > tr:hover:not([class="matching-item-title"]) {
     opacity: 0.8;
     transition: transform .2s;
     transition-delay: 0.01s;

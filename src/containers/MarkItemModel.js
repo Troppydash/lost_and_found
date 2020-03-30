@@ -14,9 +14,9 @@ import similarity from 'similarity';
 import ItemCard from './ItemCard';
 
 
-function MarkItemModel( { item , clearMarkItem } ) {
-    const handleClose = () => {
-        clearMarkItem();
+function MarkItemModel( { item , clearMarkItem, lostItem = null } ) {
+    const handleClose = (doesSubmit = false) => {
+        clearMarkItem(doesSubmit);
     };
 
     const { showSnackbar } = useContext(SnackbarContext);
@@ -26,8 +26,9 @@ function MarkItemModel( { item , clearMarkItem } ) {
     const [error , setError] = React.useState(null);
     const [isLoading , setIsLoading] = React.useState(false);
 
-    const [selectedItem , setSelectedItem] = React.useState('');
+    const [selectedItem , setSelectedItem] = React.useState(lostItem || '');
     const [query , setQuery] = React.useState('');
+
 
     useEffect(() => {
 
@@ -68,7 +69,7 @@ function MarkItemModel( { item , clearMarkItem } ) {
                 showSnackbar('error' , err.response.error);
             })
             .finally(() => {
-                handleClose();
+                handleClose(true);
                 startLoadingBar();
             });
     };
@@ -151,7 +152,8 @@ function MarkItemModel( { item , clearMarkItem } ) {
                             selectedItem && (
                                 <div>
                                     <Typography variant='body1' color="secondary">Selected
-                                        Item: { selectedItem }</Typography>
+                                        Item: { selectedItem }
+                                    </Typography>
                                 </div>
                             )
                         }

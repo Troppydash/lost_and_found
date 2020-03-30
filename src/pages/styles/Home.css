@@ -1,0 +1,28 @@
+.home-flex-box {
+    margin: 0 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.matching-item-container {
+    width: 100%;
+}
+
+@media only screen and (max-width: 1024px) {
+    .home-flex-box > * {
+        margin: 20px 0;
+        width: 95%;
+    }
+    .home-flex-box {
+        margin: 0;
+    }
+
+    .matching-table-container {
+        width: 80vw;
+        margin: 0 auto;
+        overflow-x: auto;
+    }
+}
+

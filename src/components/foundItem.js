@@ -18,7 +18,11 @@ function FoundItem( {
                 <p style={ { wordWrap: 'break-word' } }>{ item.description.substring(0 , 50) }</p>
             </td>
             <td onClick={ () => handleDetail(item) } className="house">{ item.house }</td>
-            <td onClick={ () => handleDetail(item) } className="status">{ item.status }</td>
+            {
+                item.status && (
+                    <td onClick={ () => handleDetail(item) } className="status">{ item.status }</td>
+                )
+            }
             { children }
         </tr>
     );
