@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="3ef80f0b-f7dc-46d1-9865-f537ee16eaba" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/serviceWorker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/serviceWorker.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,14 +28,14 @@
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="E:/Folder2019/Projects/LostProperty/LostProperty-functions" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../Folder2019/Projects/LostProperty/LostProperty-functions" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -83,7 +85,8 @@
       <workItem from="1585373942335" duration="1701000" />
       <workItem from="1585436906466" duration="1915000" />
       <workItem from="1585467688694" duration="8518000" />
-      <workItem from="1585516562937" duration="11003000" />
+      <workItem from="1585516562937" duration="12886000" />
+      <workItem from="1586989311374" duration="607000" />
     </task>
     <task id="LOCAL-00001" summary="unfinished, need to add mark model">
       <created>1585301056287</created>
@@ -134,24 +137,30 @@
       <option name="project" value="LOCAL" />
       <updated>1585527386966</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added now json">
+      <created>1585527626258</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1585527626258</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="unfinished, need to add mark model" />
@@ -162,37 +171,38 @@
     <MESSAGE value="Changed some table styles, added delete button on lost page, added red loading bar" />
     <MESSAGE value="Changed some table styles, added delete button on lost page, added red loading bar, added env api" />
     <MESSAGE value="Added Home page" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Home page" />
+    <MESSAGE value="Added now json" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added now json" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="509" y="111" key="CommitChangelistDialog2" timestamp="1585527384290">
+    <state x="509" y="111" key="CommitChangelistDialog2" timestamp="1585527625013">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="509" y="111" key="CommitChangelistDialog2/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585527384290" />
+    <state x="509" y="111" key="CommitChangelistDialog2/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585527625013" />
     <state x="184" y="86" key="DiffContextDialog" timestamp="1585437866039">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="184" y="86" key="DiffContextDialog/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585437866039" />
-    <state width="1901" height="217" key="GridCell.Tab.0.bottom" timestamp="1585525417448">
+    <state width="1901" height="217" key="GridCell.Tab.0.bottom" timestamp="1586989759243">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1901" height="217" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585525417448" />
-    <state width="1901" height="217" key="GridCell.Tab.0.center" timestamp="1585525417448">
+    <state width="1901" height="217" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1586989759243" />
+    <state width="1901" height="217" key="GridCell.Tab.0.center" timestamp="1586989759243">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1901" height="217" key="GridCell.Tab.0.center/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585525417448" />
-    <state width="1901" height="217" key="GridCell.Tab.0.left" timestamp="1585525417448">
+    <state width="1901" height="217" key="GridCell.Tab.0.center/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1586989759243" />
+    <state width="1901" height="217" key="GridCell.Tab.0.left" timestamp="1586989759243">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1901" height="217" key="GridCell.Tab.0.left/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585525417448" />
-    <state width="1901" height="217" key="GridCell.Tab.0.right" timestamp="1585525417448">
+    <state width="1901" height="217" key="GridCell.Tab.0.left/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1586989759243" />
+    <state width="1901" height="217" key="GridCell.Tab.0.right" timestamp="1586989759243">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1901" height="217" key="GridCell.Tab.0.right/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585525417448" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1585527389147">
+    <state width="1901" height="217" key="GridCell.Tab.0.right/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1586989759243" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1585527627433">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585527389147" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.-123.960.1496@0.0.1920.1040" timestamp="1585527627433" />
     <state x="755" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585518227895">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

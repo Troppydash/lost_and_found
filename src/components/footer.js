@@ -10,15 +10,15 @@ const Footer = () => {
                          style={ { height: '170px' , width: 'auto' } } alt='scots-logo' />
                 </div>
                 <div className="image-container">
-                    <img src="http://www.scotscollege.school.nz/wp-content/themes/blank/lib/images/new-ib.png"
+                    <img src="https://www.scotscollege.school.nz/wp-content/themes/blank/lib/images/new-ib.png"
                          style={ { height: '80px' , width: 'auto' } } alt='scots-logo' />
                 </div>
                 <div className="image-container">
-                    <img src="http://www.scotscollege.school.nz/wp-content/themes/blank/lib/images/new-is.png"
+                    <img src="https://www.scotscollege.school.nz/wp-content/themes/blank/lib/images/new-is.png"
                          style={ { height: '80px' , width: 'auto' } } alt='scots-logo' />
                 </div>
                 <div className="image-container">
-                    <img src="http://www.scotscollege.school.nz/wp-content/themes/blank/lib/images/ibsc_member.png"
+                    <img src="https://www.scotscollege.school.nz/wp-content/themes/blank/lib/images/ibsc_member.png"
                          style={ { height: '80px' , width: 'auto' } } alt='scots-logo' />
                 </div>
             </div>
